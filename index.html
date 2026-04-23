@@ -205,6 +205,10 @@
     .download-block{background:var(--deep-pine);border-radius:var(--r-xl);padding:var(--sp-5);margin-bottom:var(--sp-4);}
     .download-block .btn-primary{background:var(--hivis);color:var(--deep-pine);}
     .download-note{font-size:12px;color:rgba(255,255,255,.5);text-align:center;margin-top:var(--sp-3);}
+    /* Prefill banner */
+    .prefill-banner{display:none;align-items:center;gap:10px;padding:10px 14px;background:rgba(170,255,4,.1);border:1.5px solid rgba(170,255,4,.3);border-radius:var(--r-md);margin-bottom:var(--sp-5);font-size:13px;color:var(--pine-600);}
+    .prefill-banner.show{display:flex;}
+    .prefill-banner .material-icons-outlined{font-size:18px;color:var(--hivis);flex-shrink:0;filter:drop-shadow(0 0 4px rgba(170,255,4,.4));}
     .footer{text-align:center;padding:var(--sp-5) var(--sp-5) env(safe-area-inset-bottom,var(--sp-8));font-size:12px;color:var(--concrete);}
     .footer a{color:var(--pine-400);text-decoration:none;}
     .footer a:hover{text-decoration:underline;}
@@ -277,6 +281,10 @@
         <div class="eyebrow">Step 1 of 1 — Upload your SWMS</div>
         <h2 class="screen-heading">Upload your SWMS.</h2>
         <p class="screen-body">PDF, Word or image accepted. Our team reviews and confirms within 1 business day.</p>
+        <div class="prefill-banner" id="prefill-banner-a">
+          <span class="material-icons-outlined">auto_awesome</span>
+          <span>We've pre-filled your details from your invitation. Just review and continue.</span>
+        </div>
         <div class="card">
           <div class="field">
             <label class="field-label" for="a-name">Your full name <span class="req">*</span></label>
@@ -344,6 +352,10 @@
         <div class="eyebrow">Step 1 of 4 — About your business</div>
         <h2 class="screen-heading">Let's get you sorted.</h2>
         <p class="screen-body">Takes about 4 minutes. We'll handle the paperwork — you stay on the tools.</p>
+        <div class="prefill-banner" id="prefill-banner-b">
+          <span class="material-icons-outlined">auto_awesome</span>
+          <span>We've pre-filled your details from your invitation. Just review and continue.</span>
+        </div>
         <div class="card">
           <div class="field">
             <label class="field-label" for="b-name">Your full name <span class="req">*</span></label>
@@ -1391,6 +1403,61 @@ function buildSWMSHtml() {
   return doc;
 }
 
+/* ── URL PREFILL ───────────────────────────────────── */
+function prefillFromUrl() {
+  var params = new URLSearchParams(window.location.search);
+  var pName    = params.get("name")    || "";
+  var pEmail   = params.get("email")   || "";
+  var pPhone   = params.get("phone")   || "";
+  var pCompany = params.get("company") || "";
+  var pTrade   = params.get("trade")   || "";
+  var pGate    = params.get("gate")    || "";
+
+  var hadPrefill = false;
+
+  if (pName) {
+    document.getElementById("a-name").value = pName;
+    document.getElementById("b-name").value = pName;
+    hadPrefill = true;
+  }
+  if (pEmail) {
+    document.getElementById("a-email").value = pEmail;
+    document.getElementById("b-email").value = pEmail;
+    hadPrefill = true;
+  }
+  if (pPhone) {
+    document.getElementById("b-phone").value = pPhone;
+    hadPrefill = true;
+  }
+  if (pCompany) {
+    document.getElementById("b-company").value = pCompany;
+    updateLogoPreview();
+    hadPrefill = true;
+  }
+  if (pTrade) {
+    var lower = pTrade.toLowerCase();
+    [document.getElementById("a-trade"), document.getElementById("b-trade")].forEach(function(sel) {
+      for (var i = 1; i < sel.options.length; i++) {
+        if (sel.options[i].text.toLowerCase().indexOf(lower) !== -1) {
+          sel.selectedIndex = i; break;
+        }
+      }
+    });
+    hadPrefill = true;
+  }
+
+  if (hadPrefill) {
+    document.getElementById("prefill-banner-a").classList.add("show");
+    document.getElementById("prefill-banner-b").classList.add("show");
+  }
+
+  if (pGate === "yes" || pGate === "no") {
+    selectGate(pGate);
+    if (pGate === "yes") { setProgress(2, 1); show("screen-a1"); }
+    else { setProgress(5, 1); show("screen-b1"); }
+  }
+}
+
 /* ── CHECKBOX TOGGLE ───────────────────────────────── */
 document.querySelectorAll(".check-item").forEach(function(item) {
   var cb = item.querySelector("input[type=checkbox]");
@@ -1407,6 +1474,7 @@ document.querySelectorAll(".check-item").forEach(function(item) {
   wWrap.innerHTML = buildWorkerRowHtml(0);
   document.getElementById("workers-container").appendChild(wWrap.firstChild);
   updateWorkerNumbers();
+  prefillFromUrl();
 })();
 </script>
 
