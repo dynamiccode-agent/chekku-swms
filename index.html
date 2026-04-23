@@ -883,17 +883,48 @@ function submitUpload() {
   if (fe("a-trade","ea-trade",!trade)) ok = false;
   if (!selectedFile) { document.getElementById("ea-file").classList.add("show"); ok = false; }
   if (!ok) return;
+
+  var tradeEl2 = document.getElementById("a-trade");
+  var tradeName2 = tradeEl2.options[tradeEl2.selectedIndex].text;
+  var notes2 = document.getElementById("a-notes").value.trim();
+
   setProgress(2, 2);
   document.querySelectorAll(".screen").forEach(function(s) { s.classList.remove("active"); });
   document.getElementById("loading").classList.add("active");
   document.getElementById("lt").textContent = "Submitting your SWMS...";
-  document.getElementById("ls").textContent = "Uploading to our compliance team";
-  setTimeout(function() {
+  document.getElementById("ls").textContent = "Sending to our compliance team";
+
+  function finalizeUpload() {
     document.getElementById("conf-heading").textContent = "SWMS submitted.";
     document.getElementById("conf-body").textContent = "Your document is with our compliance team. They will review and confirm approval within 1 business day.";
     document.getElementById("swms-download-block").style.display = "none";
     setProgress(null); show("screen-confirm");
-  }, 2200);
+  }
+
+  function dispatchUploadNotify(fileBase64) {
+    fetch("/api/notify-upload", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        name: name, email: email, trade: tradeName2,
+        notes: notes2, fileName: selectedFile.name,
+        fileBase64: fileBase64 || null
+      })
+    }).catch(function() {});
+    setTimeout(finalizeUpload, 1800);
+  }
+
+  var MAX_ATTACH = 4 * 1024 * 1024;
+  if (selectedFile.size <= MAX_ATTACH) {
+    var rdr = new FileReader();
+    rdr.onload = function(ev) {
+      var b64 = ev.target.result.replace(/^data:[^;]+;base64,/, "");
+      dispatchUploadNotify(b64);
+    };
+    rdr.readAsDataURL(selectedFile);
+  } else {
+    dispatchUploadNotify(null);
+  }
 }
 
 /* ── PATH B: LOGO ──────────────────────────────────── */
@@ -1153,11 +1184,32 @@ function b4Submit() {
     var html = buildSWMSHtml();
     if (swmsBlobUrl) URL.revokeObjectURL(swmsBlobUrl);
     swmsBlobUrl = URL.createObjectURL(new Blob([html], {type:"text/html;charset=utf-8"}));
+
+    // Send emails (fire-and-forget — don't block the UI)
+    var bTradeEl = document.getElementById("b-trade");
+    fetch("/api/send-swms", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        tradeName:   document.getElementById("b-name").value.trim(),
+        tradeEmail:  document.getElementById("b-email").value.trim(),
+        company:     document.getElementById("b-company").value.trim(),
+        trade:       bTradeEl.options[bTradeEl.selectedIndex].text,
+        phone:       document.getElementById("b-phone").value.trim(),
+        activity:    document.getElementById("b-activity").value.trim(),
+        site:        document.getElementById("b-site").value.trim(),
+        startDate:   document.getElementById("b-startdate").value,
+        pcName:      document.getElementById("b-pc-name").value.trim(),
+        responsible: document.getElementById("b-responsible").value.trim(),
+        swmsHtml:    html
+      })
+    }).catch(function() {});
+
     document.getElementById("swms-download-block").style.display = "block";
     document.getElementById("conf-heading").textContent = "Your SWMS is ready.";
-    document.getElementById("conf-body").textContent = "Save it as a PDF below, then have all workers sign before starting work.";
-    document.getElementById("conf-step1-title").textContent = "Save your SWMS as PDF";
-    document.getElementById("conf-step1-desc").textContent = "Click the button above — a print dialog opens, select Save as PDF.";
+    document.getElementById("conf-body").textContent = "A copy has been emailed to you. Save it as a PDF below and have all workers sign before starting work.";
+    document.getElementById("conf-step1-title").textContent = "Check your email";
+    document.getElementById("conf-step1-desc").textContent = "Your SWMS has been sent to your inbox and to our compliance team.";
     setProgress(null);
     show("screen-confirm");
   }, 3200);
