@@ -9,472 +9,235 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-
   <style>
     :root {
-      --hivis:       #AAFF04;
-      --hivis-dark:  #95E003;
-      --deep-pine:   #163029;
-      --pine-800:    #163029;
-      --pine-700:    #1F4238;
-      --pine-600:    #2A5648;
-      --pine-500:    #3E7264;
-      --pine-400:    #6A9A8D;
-      --pine-300:    #A0BEB5;
-      --pine-200:    #D1DDD9;
-      --pine-100:    #E8EEEC;
-      --pine-50:     #F4F7F5;
-      --bone:        #F8F5EE;
-      --bone-300:    #ECE7D8;
-      --white:       #FFFFFF;
-      --concrete:    #BDBFBF;
-      --success:     #2A9D6A;
-      --success-bg:  #E5F5EC;
-      --danger:      #E5484D;
-      --danger-bg:   #FDE8E8;
-
-      --fg-1: var(--pine-800);
-      --fg-2: var(--pine-600);
-      --fg-3: var(--pine-400);
-      --border-1: var(--pine-100);
-      --border-2: var(--pine-200);
-
-      --font: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-
-      --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:20px;
-      --sp-6:24px; --sp-8:32px; --sp-10:40px; --sp-12:48px; --sp-16:64px;
-
-      --r-sm:8px; --r-md:12px; --r-lg:16px; --r-xl:24px; --r-pill:9999px;
-
-      --shadow-sm:  0 1px 3px rgba(22,48,41,.08),0 1px 2px rgba(22,48,41,.04);
-      --shadow-md:  0 4px 12px rgba(22,48,41,.08),0 2px 4px rgba(22,48,41,.04);
-      --shadow-lg:  0 12px 32px rgba(22,48,41,.10),0 4px 8px rgba(22,48,41,.04);
-      --shadow-pop: 0 8px 40px rgba(22,48,41,.18);
-
-      --ease-out: cubic-bezier(0.2,0.8,0.2,1);
-      --dur-fast: 120ms; --dur-base: 200ms; --dur-slow: 320ms;
+      --hivis:#AAFF04; --hivis-dark:#95E003;
+      --deep-pine:#163029;
+      --pine-800:#163029; --pine-700:#1F4238; --pine-600:#2A5648;
+      --pine-500:#3E7264; --pine-400:#6A9A8D; --pine-300:#A0BEB5;
+      --pine-200:#D1DDD9; --pine-100:#E8EEEC; --pine-50:#F4F7F5;
+      --bone:#F8F5EE; --bone-300:#ECE7D8;
+      --white:#FFFFFF; --concrete:#BDBFBF;
+      --success:#2A9D6A; --success-bg:#E5F5EC;
+      --danger:#E5484D; --danger-bg:#FDE8E8;
+      --warning:#F6B73C; --warning-bg:#FEF3DA;
+      --fg-1:var(--pine-800); --fg-2:var(--pine-600); --fg-3:var(--pine-400);
+      --border-1:var(--pine-100); --border-2:var(--pine-200);
+      --font:'Outfit',-apple-system,BlinkMacSystemFont,sans-serif;
+      --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;
+      --sp-6:24px;--sp-8:32px;--sp-10:40px;--sp-12:48px;--sp-16:64px;
+      --r-sm:8px;--r-md:12px;--r-lg:16px;--r-xl:24px;--r-pill:9999px;
+      --shadow-sm:0 1px 3px rgba(22,48,41,.08),0 1px 2px rgba(22,48,41,.04);
+      --shadow-md:0 4px 12px rgba(22,48,41,.08),0 2px 4px rgba(22,48,41,.04);
+      --shadow-lg:0 12px 32px rgba(22,48,41,.10),0 4px 8px rgba(22,48,41,.04);
+      --shadow-pop:0 8px 40px rgba(22,48,41,.18);
+      --ease-out:cubic-bezier(0.2,0.8,0.2,1);
+      --dur-fast:120ms;--dur-base:200ms;--dur-slow:320ms;
     }
-
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-
-    html{
-      -webkit-text-size-adjust:100%;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-    }
-
-    body{
-      font-family:var(--font);
-      background:var(--bone);
-      color:var(--fg-1);
-      min-height:100dvh;
-      line-height:1.55;
-    }
-
-    /* ── APP SHELL ─────────────────────────────────── */
+    html{-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+    body{font-family:var(--font);background:var(--bone);color:var(--fg-1);min-height:100dvh;line-height:1.55;}
     .app{min-height:100dvh;display:flex;flex-direction:column;}
-
-    /* ── HEADER ────────────────────────────────────── */
-    .header{
-      background:var(--deep-pine);
-      padding:14px var(--sp-5);
-      display:flex;align-items:center;justify-content:space-between;
-      position:sticky;top:0;z-index:200;
-    }
+    .header{background:var(--deep-pine);padding:14px var(--sp-5);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;}
     .header-logo{display:flex;align-items:center;text-decoration:none;}
     .logo-wordmark{height:26px;width:auto;}
-    .header-pill{
-      font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-      color:var(--deep-pine);background:var(--hivis);
-      padding:4px 10px;border-radius:var(--r-pill);
-    }
-
-    /* ── PROGRESS ──────────────────────────────────── */
-    .progress-shell{
-      background:var(--deep-pine);
-      padding:0 var(--sp-5) var(--sp-5);
-      transition:opacity var(--dur-base) var(--ease-out);
-    }
+    .progress-shell{background:var(--deep-pine);padding:0 var(--sp-5) var(--sp-5);transition:opacity var(--dur-base) var(--ease-out);}
     .progress-shell.hidden{opacity:0;pointer-events:none;}
-
-    .progress-track{
-      display:flex;align-items:center;
-      max-width:320px;margin:0 auto;
-    }
+    .progress-track{display:flex;align-items:center;max-width:340px;margin:0 auto;}
     .p-step{display:flex;flex-direction:column;align-items:center;}
-    .p-dot{
-      width:30px;height:30px;border-radius:50%;
-      border:2px solid rgba(255,255,255,.18);
-      display:flex;align-items:center;justify-content:center;
-      font-size:13px;font-weight:700;color:rgba(255,255,255,.35);
-      flex-shrink:0;
-      transition:background var(--dur-base) var(--ease-out),
-                 border-color var(--dur-base) var(--ease-out),
-                 color var(--dur-base) var(--ease-out);
-    }
+    .p-dot{width:28px;height:28px;border-radius:50%;border:2px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:rgba(255,255,255,.35);flex-shrink:0;transition:background var(--dur-base) var(--ease-out),border-color var(--dur-base) var(--ease-out),color var(--dur-base) var(--ease-out);}
     .p-dot[data-state="active"]{background:var(--hivis);border-color:var(--hivis);color:var(--deep-pine);}
     .p-dot[data-state="done"]{background:var(--pine-600);border-color:var(--pine-600);color:var(--white);font-size:0;}
-    .p-dot[data-state="done"]::after{
-      content:'';display:block;width:14px;height:14px;
-      background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E") center/contain no-repeat;
-    }
-    .p-line{
-      flex:1;height:2px;background:rgba(255,255,255,.12);
-      margin-bottom:0;
-      transition:background var(--dur-slow) var(--ease-out);
-    }
+    .p-dot[data-state="done"]::after{content:'';display:block;width:12px;height:12px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E") center/contain no-repeat;}
+    .p-line{flex:1;height:2px;background:rgba(255,255,255,.12);transition:background var(--dur-slow) var(--ease-out);}
     .p-line[data-state="done"]{background:var(--pine-600);}
-
-    /* ── CARD SHELL (desktop) ──────────────────────── */
     .card-shell{flex:1;display:flex;flex-direction:column;}
-
-    /* ── MAIN ──────────────────────────────────────── */
-    .main{
-      flex:1;
-      padding:var(--sp-6) var(--sp-5) var(--sp-16);
-      max-width:480px;margin:0 auto;width:100%;
-    }
-
-    /* ── SCREEN PANELS ─────────────────────────────── */
+    .main{flex:1;padding:var(--sp-6) var(--sp-5) var(--sp-16);max-width:480px;margin:0 auto;width:100%;}
     .screen{display:none;}
-    .screen.active{
-      display:block;
-      animation:fadeUp var(--dur-slow) var(--ease-out) both;
-    }
-    @keyframes fadeUp{
-      from{opacity:0;transform:translateY(16px);}
-      to  {opacity:1;transform:translateY(0);}
-    }
-
-    /* ── TYPOGRAPHY ────────────────────────────────── */
-    .eyebrow{
-      font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-      color:var(--pine-500);margin-bottom:var(--sp-2);
-    }
-    .screen-heading{
-      font-size:26px;font-weight:800;letter-spacing:-0.02em;
-      color:var(--fg-1);line-height:1.15;margin-bottom:8px;
-    }
-    .screen-body{
-      font-size:15px;color:var(--fg-2);line-height:1.55;
-      margin-bottom:var(--sp-6);
-    }
-
-    /* ── CARD ──────────────────────────────────────── */
-    .card{
-      background:var(--white);border-radius:var(--r-xl);
-      padding:var(--sp-6);box-shadow:var(--shadow-md);
-      margin-bottom:var(--sp-4);
-    }
-
-    /* ── FORM ──────────────────────────────────────── */
+    .screen.active{display:block;animation:fadeUp var(--dur-slow) var(--ease-out) both;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+    .eyebrow{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--pine-500);margin-bottom:var(--sp-2);}
+    .screen-heading{font-size:26px;font-weight:800;letter-spacing:-0.02em;color:var(--fg-1);line-height:1.15;margin-bottom:8px;}
+    .screen-body{font-size:15px;color:var(--fg-2);line-height:1.55;margin-bottom:var(--sp-6);}
+    .card{background:var(--white);border-radius:var(--r-xl);padding:var(--sp-6);box-shadow:var(--shadow-md);margin-bottom:var(--sp-4);}
     .field{margin-bottom:var(--sp-5);}
     .field:last-child{margin-bottom:0;}
     .field-label{display:block;font-size:14px;font-weight:600;color:var(--fg-1);margin-bottom:6px;}
     .field-label .req{color:var(--danger);margin-left:2px;}
     .field-label .opt{font-weight:400;color:var(--fg-3);margin-left:4px;}
-
-    input[type="text"],input[type="email"],select,textarea{
-      display:block;width:100%;padding:14px 16px;
-      border:1.5px solid var(--border-2);border-radius:var(--r-md);
-      font-family:var(--font);font-size:16px;color:var(--fg-1);
-      background:var(--white);outline:none;
-      -webkit-appearance:none;appearance:none;
-      transition:border-color var(--dur-fast) var(--ease-out),
-                 box-shadow var(--dur-fast) var(--ease-out);
-    }
+    input[type="text"],input[type="email"],input[type="tel"],input[type="date"],select,textarea{display:block;width:100%;padding:14px 16px;border:1.5px solid var(--border-2);border-radius:var(--r-md);font-family:var(--font);font-size:16px;color:var(--fg-1);background:var(--white);outline:none;-webkit-appearance:none;appearance:none;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out);}
     input::placeholder,textarea::placeholder{color:var(--concrete);}
-    input:focus,select:focus,textarea:focus{
-      border-color:var(--hivis);
-      box-shadow:0 0 0 3px rgba(170,255,4,.2);
-    }
+    input:focus,select:focus,textarea:focus{border-color:var(--hivis);box-shadow:0 0 0 3px rgba(170,255,4,.2);}
     input.err,select.err,textarea.err{border-color:var(--danger);}
     .ferr{font-size:12px;color:var(--danger);margin-top:5px;display:none;}
     .ferr.show{display:block;}
-
     .select-wrap{position:relative;}
-    .select-wrap::after{
-      content:'';position:absolute;right:16px;top:50%;transform:translateY(-50%);
-      pointer-events:none;
-      border-left:5px solid transparent;border-right:5px solid transparent;
-      border-top:6px solid var(--fg-2);
-    }
-    textarea{resize:vertical;min-height:96px;}
-
-    /* ── BUTTONS ───────────────────────────────────── */
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:6px;
-      font-family:var(--font);font-size:16px;font-weight:700;
-      border:none;cursor:pointer;text-decoration:none;
-      transition:background var(--dur-fast) var(--ease-out),
-                 transform var(--dur-fast) var(--ease-out);
-      -webkit-tap-highlight-color:transparent;
-      white-space:nowrap;
-    }
+    .select-wrap::after{content:'';position:absolute;right:16px;top:50%;transform:translateY(-50%);pointer-events:none;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid var(--fg-2);}
+    textarea{resize:vertical;min-height:88px;}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:var(--font);font-size:16px;font-weight:700;border:none;cursor:pointer;text-decoration:none;transition:background var(--dur-fast) var(--ease-out),transform var(--dur-fast) var(--ease-out);-webkit-tap-highlight-color:transparent;white-space:nowrap;}
     .btn:active{transform:scale(0.975);}
-
-    .btn-primary{
-      background:var(--hivis);color:var(--deep-pine);
-      padding:16px 28px;border-radius:var(--r-pill);width:100%;
-    }
+    .btn-primary{background:var(--hivis);color:var(--deep-pine);padding:16px 28px;border-radius:var(--r-pill);width:100%;}
     .btn-primary:hover{background:var(--hivis-dark);}
     .btn-primary:disabled{opacity:.4;cursor:not-allowed;}
     .btn-primary:disabled:active{transform:none;}
-
-    .btn-outline{
-      background:transparent;color:var(--fg-2);
-      padding:14px 24px;border-radius:var(--r-pill);
-      border:1.5px solid var(--border-2);width:100%;
-    }
+    .btn-outline{background:transparent;color:var(--fg-2);padding:14px 24px;border-radius:var(--r-pill);border:1.5px solid var(--border-2);width:100%;}
     .btn-outline:hover{border-color:var(--pine-400);background:var(--pine-50);}
-
-    .btn-ghost{
-      background:transparent;color:var(--fg-2);
-      padding:12px 8px;border-radius:var(--r-md);
-      font-size:14px;font-weight:600;
-    }
+    .btn-ghost{background:transparent;color:var(--fg-2);padding:12px 8px;border-radius:var(--r-md);font-size:14px;font-weight:600;font-family:var(--font);}
     .btn-ghost:hover{background:var(--pine-50);}
-
     .btn-stack{display:flex;flex-direction:column;gap:var(--sp-3);margin-top:var(--sp-5);}
     .bicon{font-size:18px !important;line-height:1 !important;}
-
-    /* ── GATE / BRANCH CARDS ───────────────────────── */
-    .gate-hero{
-      text-align:center;
-      padding:var(--sp-8) 0 var(--sp-6);
-    }
-    .gate-icon{
-      width:72px;height:72px;border-radius:50%;
-      background:var(--deep-pine);
-      display:flex;align-items:center;justify-content:center;
-      margin:0 auto var(--sp-5);
-    }
-    .gate-icon .material-icons-outlined{font-size:36px;color:var(--hivis);}
-    .gate-heading{
-      font-size:28px;font-weight:800;letter-spacing:-0.02em;
-      color:var(--fg-1);line-height:1.15;margin-bottom:10px;
-    }
+    /* Gate */
+    .gate-hero{text-align:center;padding:var(--sp-8) 0 var(--sp-6);}
+    .gate-icon{width:72px;height:72px;border-radius:50%;background:var(--deep-pine);display:flex;align-items:center;justify-content:center;margin:0 auto var(--sp-5);}
+    .gate-heading{font-size:28px;font-weight:800;letter-spacing:-0.02em;color:var(--fg-1);line-height:1.15;margin-bottom:10px;}
     .gate-body{font-size:15px;color:var(--fg-2);line-height:1.55;margin-bottom:var(--sp-6);}
-
     .branch-grid{display:flex;flex-direction:column;gap:var(--sp-3);margin-bottom:var(--sp-5);}
-
-    .branch-card{
-      display:flex;align-items:flex-start;gap:var(--sp-4);
-      padding:var(--sp-5);
-      background:var(--white);border:2px solid var(--border-2);border-radius:var(--r-xl);
-      cursor:pointer;text-align:left;width:100%;font-family:var(--font);
-      transition:border-color var(--dur-base) var(--ease-out),
-                 box-shadow var(--dur-base) var(--ease-out),
-                 transform var(--dur-base) var(--ease-out);
-      -webkit-tap-highlight-color:transparent;
-    }
+    .branch-card{display:flex;align-items:flex-start;gap:var(--sp-4);padding:var(--sp-5);background:var(--white);border:2px solid var(--border-2);border-radius:var(--r-xl);cursor:pointer;text-align:left;width:100%;font-family:var(--font);transition:border-color var(--dur-base) var(--ease-out),box-shadow var(--dur-base) var(--ease-out),transform var(--dur-base) var(--ease-out);-webkit-tap-highlight-color:transparent;}
     .branch-card:hover{border-color:var(--pine-300);box-shadow:var(--shadow-md);transform:translateY(-1px);}
     .branch-card:active{transform:scale(0.99);}
-    .branch-card.selected{
-      border-color:var(--hivis);
-      box-shadow:0 0 0 3px rgba(170,255,4,.15),var(--shadow-md);
-      background:linear-gradient(145deg,rgba(170,255,4,.05) 0%,rgba(170,255,4,.02) 100%);
-    }
-
-    .bi{
-      width:52px;height:52px;border-radius:var(--r-md);
-      background:var(--pine-50);
-      display:flex;align-items:center;justify-content:center;flex-shrink:0;
-      transition:background var(--dur-base) var(--ease-out);
-    }
+    .branch-card.selected{border-color:var(--hivis);box-shadow:0 0 0 3px rgba(170,255,4,.15),var(--shadow-md);background:linear-gradient(145deg,rgba(170,255,4,.05) 0%,rgba(170,255,4,.02) 100%);}
+    .bi{width:52px;height:52px;border-radius:var(--r-md);background:var(--pine-50);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background var(--dur-base) var(--ease-out);}
     .bi .material-icons-outlined{font-size:26px;color:var(--pine-500);transition:color var(--dur-base) var(--ease-out);}
     .branch-card.selected .bi{background:var(--hivis);}
     .branch-card.selected .bi .material-icons-outlined{color:var(--deep-pine);}
-
     .bb{flex:1;}
     .bt{font-size:16px;font-weight:700;color:var(--fg-1);margin-bottom:4px;}
     .bd{font-size:14px;color:var(--fg-2);line-height:1.45;}
-
-    .br{
-      width:22px;height:22px;border-radius:50%;
-      border:2px solid var(--border-2);flex-shrink:0;margin-top:2px;
-      transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out);
-      position:relative;
-    }
+    .br{width:22px;height:22px;border-radius:50%;border:2px solid var(--border-2);flex-shrink:0;margin-top:2px;transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out);position:relative;}
     .branch-card.selected .br{background:var(--hivis);border-color:var(--hivis);}
-    .branch-card.selected .br::after{
-      content:'';position:absolute;inset:0;
-      background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23163029'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E") center/14px no-repeat;
-    }
-
-    /* ── UPLOAD ZONE ───────────────────────────────── */
-    .upload-zone{
-      border:2px dashed var(--border-2);border-radius:var(--r-lg);
-      padding:var(--sp-10) var(--sp-6);text-align:center;cursor:pointer;
-      background:var(--pine-50);
-      transition:border-color var(--dur-base) var(--ease-out),background var(--dur-base) var(--ease-out);
-      -webkit-tap-highlight-color:transparent;
-    }
+    .branch-card.selected .br::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23163029'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E") center/14px no-repeat;}
+    /* Upload zone */
+    .upload-zone{border:2px dashed var(--border-2);border-radius:var(--r-lg);padding:var(--sp-10) var(--sp-6);text-align:center;cursor:pointer;background:var(--pine-50);transition:border-color var(--dur-base) var(--ease-out),background var(--dur-base) var(--ease-out);-webkit-tap-highlight-color:transparent;}
     .upload-zone:hover,.upload-zone.drag-over{border-color:var(--hivis);background:rgba(170,255,4,.04);}
     .upload-zone.has-file{border-color:var(--success);background:rgba(42,157,106,.04);border-style:solid;}
-
-    .uiw{
-      width:60px;height:60px;border-radius:var(--r-lg);
-      background:var(--white);box-shadow:var(--shadow-sm);
-      display:flex;align-items:center;justify-content:center;
-      margin:0 auto var(--sp-4);
-    }
+    .uiw{width:60px;height:60px;border-radius:var(--r-lg);background:var(--white);box-shadow:var(--shadow-sm);display:flex;align-items:center;justify-content:center;margin:0 auto var(--sp-4);}
     .uiw .material-icons-outlined{font-size:30px;color:var(--pine-500);}
     .upload-zone.has-file .uiw .material-icons-outlined{color:var(--success);}
     .ut{font-size:15px;font-weight:700;color:var(--fg-1);margin-bottom:4px;}
     .uh{font-size:13px;color:var(--fg-3);}
     .ua{font-size:11px;color:var(--concrete);margin-top:var(--sp-2);letter-spacing:.02em;}
-
     #file-input{display:none;}
-
-    .file-pill{
-      display:none;align-items:center;gap:var(--sp-3);
-      padding:var(--sp-3) var(--sp-4);background:var(--success-bg);border-radius:var(--r-md);
-      margin-top:var(--sp-3);
-    }
+    .file-pill{display:none;align-items:center;gap:var(--sp-3);padding:var(--sp-3) var(--sp-4);background:var(--success-bg);border-radius:var(--r-md);margin-top:var(--sp-3);}
     .file-pill.show{display:flex;}
     .file-pill .material-icons-outlined{color:var(--success);font-size:20px;flex-shrink:0;}
     .fp-name{flex:1;font-size:14px;font-weight:600;color:var(--fg-1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
     .fp-size{font-size:12px;color:var(--fg-3);flex-shrink:0;}
-    .fp-rm{
-      background:none;border:none;cursor:pointer;padding:4px;border-radius:50%;
-      color:var(--fg-3);display:flex;
-      transition:color var(--dur-fast),background var(--dur-fast);
-      -webkit-tap-highlight-color:transparent;
-    }
+    .fp-rm{background:none;border:none;cursor:pointer;padding:4px;border-radius:50%;color:var(--fg-3);display:flex;transition:color var(--dur-fast),background var(--dur-fast);-webkit-tap-highlight-color:transparent;}
     .fp-rm:hover{color:var(--danger);background:var(--danger-bg);}
-
-    /* ── CHECKBOX GRID ─────────────────────────────── */
+    /* Logo toggle */
+    .logo-toggle{display:flex;gap:var(--sp-2);margin-bottom:var(--sp-4);}
+    .logo-toggle-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 14px;border-radius:var(--r-md);border:1.5px solid var(--border-2);background:var(--white);font-family:var(--font);font-size:13px;font-weight:600;color:var(--fg-2);cursor:pointer;transition:all var(--dur-fast) var(--ease-out);}
+    .logo-toggle-btn:hover{border-color:var(--pine-300);}
+    .logo-toggle-btn.active{border-color:var(--hivis);background:rgba(170,255,4,.06);color:var(--fg-1);}
+    .logo-toggle-btn .material-icons-outlined{font-size:16px !important;}
+    .logo-preview{background:var(--pine-50);border-radius:var(--r-md);padding:var(--sp-5);min-height:72px;display:flex;align-items:center;}
+    .logo-preview-empty{font-size:13px;color:var(--concrete);font-style:italic;}
+    .logo-upload-compact{border:2px dashed var(--border-2);border-radius:var(--r-md);padding:var(--sp-5) var(--sp-4);text-align:center;cursor:pointer;background:var(--pine-50);transition:border-color var(--dur-base),background var(--dur-base);}
+    .logo-upload-compact:hover{border-color:var(--hivis);background:rgba(170,255,4,.04);}
+    .logo-upload-compact.has-logo{border-color:var(--success);border-style:solid;background:rgba(42,157,106,.04);}
+    #logo-input{display:none;}
+    .logo-img-preview{max-height:72px;max-width:200px;object-fit:contain;display:block;margin:0 auto;}
+    /* Checkboxes */
     .check-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2);}
-    .check-item{
-      display:flex;align-items:center;gap:8px;padding:10px 12px;
-      border:1.5px solid var(--border-1);border-radius:var(--r-md);
-      cursor:pointer;font-size:13px;font-weight:500;color:var(--fg-2);
-      transition:border-color var(--dur-fast),background var(--dur-fast),color var(--dur-fast);
-      -webkit-tap-highlight-color:transparent;user-select:none;
-    }
+    .check-item{display:flex;align-items:center;gap:8px;padding:10px 12px;border:1.5px solid var(--border-1);border-radius:var(--r-md);cursor:pointer;font-size:13px;font-weight:500;color:var(--fg-2);transition:border-color var(--dur-fast),background var(--dur-fast),color var(--dur-fast);-webkit-tap-highlight-color:transparent;user-select:none;}
     .check-item:hover{border-color:var(--pine-300);background:var(--pine-50);}
     .check-item.checked{border-color:var(--hivis);background:rgba(170,255,4,.06);color:var(--fg-1);}
     .check-item input[type="checkbox"]{display:none;}
-    .cbox{
-      width:18px;height:18px;flex-shrink:0;border-radius:4px;
-      border:2px solid var(--border-2);position:relative;
-      transition:background var(--dur-fast),border-color var(--dur-fast);
-    }
+    .cbox{width:18px;height:18px;flex-shrink:0;border-radius:4px;border:2px solid var(--border-2);position:relative;transition:background var(--dur-fast),border-color var(--dur-fast);}
     .check-item.checked .cbox{background:var(--hivis);border-color:var(--hivis);}
-    .check-item.checked .cbox::after{
-      content:'';position:absolute;inset:0;
-      background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23163029'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E") center/12px no-repeat;
-    }
+    .check-item.checked .cbox::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23163029'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E") center/12px no-repeat;}
     .ctext{flex:1;}
     .clabel{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-2);margin-bottom:var(--sp-3);}
     .chint{font-size:13px;color:var(--fg-3);margin-bottom:var(--sp-3);}
-
-    /* ── LOADING ───────────────────────────────────── */
-    #loading{
-      display:none;text-align:center;
-      padding:var(--sp-16) var(--sp-5);
-      animation:fadeUp var(--dur-slow) var(--ease-out) both;
-    }
+    .sec-divider{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-2);padding:var(--sp-4) 0 var(--sp-3);border-top:1px solid var(--border-1);margin-top:var(--sp-2);}
+    .sec-divider:first-child{border-top:none;margin-top:0;padding-top:0;}
+    /* Task rows */
+    .task-row{background:var(--pine-50);border-radius:var(--r-lg);padding:var(--sp-5);margin-bottom:var(--sp-3);}
+    .task-row:last-child{margin-bottom:0;}
+    .trow-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-4);}
+    .trow-num{font-size:13px;font-weight:700;color:var(--pine-600);letter-spacing:.04em;text-transform:uppercase;}
+    .trow-rm{background:none;border:none;cursor:pointer;padding:6px;border-radius:var(--r-sm);color:var(--fg-3);display:flex;font-family:var(--font);transition:color var(--dur-fast),background var(--dur-fast);-webkit-tap-highlight-color:transparent;}
+    .trow-rm:hover{color:var(--danger);background:var(--danger-bg);}
+    .trow-rm:disabled{opacity:.3;cursor:not-allowed;}
+    .trow-rm:disabled:hover{color:var(--fg-3);background:none;}
+    .task-2col{display:grid;grid-template-columns:1fr 140px;gap:var(--sp-3);}
+    .task-row .field{margin-bottom:var(--sp-3);}
+    .task-row .field:last-child{margin-bottom:0;}
+    .task-row input[type="text"],.task-row select,.task-row textarea{background:var(--white);}
+    /* Worker rows */
+    .worker-row{background:var(--pine-50);border-radius:var(--r-lg);padding:var(--sp-5);margin-bottom:var(--sp-3);}
+    .worker-row:last-child{margin-bottom:0;}
+    .wrow-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-4);}
+    .wrow-label{font-size:13px;font-weight:700;color:var(--pine-600);letter-spacing:.04em;text-transform:uppercase;}
+    .worker-row .field{margin-bottom:var(--sp-3);}
+    .worker-row .field:last-child{margin-bottom:0;}
+    .worker-row input[type="text"]{background:var(--white);}
+    .add-row-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:12px;border:2px dashed var(--border-2);border-radius:var(--r-lg);background:none;font-family:var(--font);font-size:14px;font-weight:600;color:var(--pine-500);cursor:pointer;transition:all var(--dur-fast) var(--ease-out);margin-top:var(--sp-3);}
+    .add-row-btn:hover{border-color:var(--hivis);color:var(--fg-1);background:rgba(170,255,4,.04);}
+    .add-row-btn .material-icons-outlined{font-size:18px !important;}
+    /* Loading */
+    #loading{display:none;text-align:center;padding:var(--sp-16) var(--sp-5);animation:fadeUp var(--dur-slow) var(--ease-out) both;}
     #loading.active{display:block;}
-    .spinner{
-      width:44px;height:44px;
-      border:3px solid var(--pine-100);border-top-color:var(--hivis);
-      border-radius:50%;animation:spin .75s linear infinite;
-      margin:0 auto var(--sp-6);
-    }
+    .spinner{width:44px;height:44px;border:3px solid var(--pine-100);border-top-color:var(--hivis);border-radius:50%;animation:spin .75s linear infinite;margin:0 auto var(--sp-6);}
     @keyframes spin{to{transform:rotate(360deg);}}
     #lt{font-size:18px;font-weight:700;color:var(--fg-1);margin-bottom:var(--sp-2);}
     #ls{font-size:14px;color:var(--fg-3);}
-
-    /* ── CONFIRM / SUCCESS ─────────────────────────── */
+    /* Confirm */
     .success-hero{text-align:center;padding:var(--sp-8) 0 var(--sp-6);}
-    .success-badge{
-      width:80px;height:80px;border-radius:50%;background:var(--hivis);
-      display:flex;align-items:center;justify-content:center;
-      margin:0 auto var(--sp-5);
-      animation:popIn .5s var(--ease-out) both;
-    }
-    @keyframes popIn{
-      0%  {transform:scale(0.4);opacity:0;}
-      70% {transform:scale(1.08);}
-      100%{transform:scale(1);opacity:1;}
-    }
+    .success-badge{width:80px;height:80px;border-radius:50%;background:var(--hivis);display:flex;align-items:center;justify-content:center;margin:0 auto var(--sp-5);animation:popIn .5s var(--ease-out) both;}
+    @keyframes popIn{0%{transform:scale(0.4);opacity:0;}70%{transform:scale(1.08);}100%{transform:scale(1);opacity:1;}}
     .success-badge .material-icons-outlined{font-size:42px;color:var(--deep-pine);}
     .success-heading{font-size:30px;font-weight:800;letter-spacing:-.02em;color:var(--fg-1);margin-bottom:8px;}
     .success-body{font-size:15px;color:var(--fg-2);line-height:1.6;}
-
     .clabel2{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-2);margin-bottom:var(--sp-4);}
     .ns{display:flex;gap:var(--sp-4);padding:var(--sp-4) 0;border-bottom:1px solid var(--border-1);}
     .ns:last-child{border-bottom:none;}
     .nn{width:26px;height:26px;border-radius:50%;background:var(--pine-50);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--pine-600);flex-shrink:0;margin-top:1px;}
     .nt{font-size:14px;font-weight:700;color:var(--fg-1);margin-bottom:2px;}
     .nd{font-size:13px;color:var(--fg-2);line-height:1.5;}
-
-    .promo-card{
-      background:var(--deep-pine);border-radius:var(--r-xl);
-      padding:var(--sp-5);display:flex;gap:var(--sp-4);align-items:flex-start;
-    }
+    .promo-card{background:var(--deep-pine);border-radius:var(--r-xl);padding:var(--sp-5);display:flex;gap:var(--sp-4);align-items:flex-start;}
     .promo-card .material-icons-outlined{font-size:26px;color:var(--hivis);flex-shrink:0;margin-top:2px;}
     .promo-title{font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px;}
     .promo-desc{font-size:13px;color:rgba(255,255,255,.65);line-height:1.5;}
-    .promo-link{
-      display:inline-flex;align-items:center;gap:5px;margin-top:10px;
-      font-size:14px;font-weight:700;color:var(--hivis);text-decoration:none;
-    }
+    .promo-link{display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-size:14px;font-weight:700;color:var(--hivis);text-decoration:none;}
     .promo-link:hover{text-decoration:underline;text-underline-offset:3px;}
     .promo-link .material-icons-outlined{font-size:16px !important;}
-
-    /* ── FOOTER ────────────────────────────────────── */
-    .footer{
-      text-align:center;padding:var(--sp-5) var(--sp-5) env(safe-area-inset-bottom,var(--sp-8));
-      font-size:12px;color:var(--concrete);
-    }
+    .download-block{background:var(--deep-pine);border-radius:var(--r-xl);padding:var(--sp-5);margin-bottom:var(--sp-4);}
+    .download-block .btn-primary{background:var(--hivis);color:var(--deep-pine);}
+    .download-note{font-size:12px;color:rgba(255,255,255,.5);text-align:center;margin-top:var(--sp-3);}
+    .footer{text-align:center;padding:var(--sp-5) var(--sp-5) env(safe-area-inset-bottom,var(--sp-8));font-size:12px;color:var(--concrete);}
     .footer a{color:var(--pine-400);text-decoration:none;}
     .footer a:hover{text-decoration:underline;}
-
-    /* ── DESKTOP ───────────────────────────────────── */
     @media(min-width:640px){
-      body{
-        background:var(--deep-pine);
-        background-image:
-          radial-gradient(ellipse 60% 50% at 15% 60%,rgba(170,255,4,.07) 0%,transparent 70%),
-          radial-gradient(ellipse 50% 40% at 85% 30%,rgba(62,114,100,.15) 0%,transparent 65%);
-      }
+      body{background:var(--deep-pine);background-image:radial-gradient(ellipse 60% 50% at 15% 60%,rgba(170,255,4,.07) 0%,transparent 70%),radial-gradient(ellipse 50% 40% at 85% 30%,rgba(62,114,100,.15) 0%,transparent 65%);}
       .header{background:transparent;position:relative;max-width:540px;margin:0 auto;padding-top:var(--sp-8);}
       .progress-shell{background:transparent;}
-      .progress-track{max-width:360px;}
+      .progress-track{max-width:380px;}
       .card-shell{max-width:480px;margin:0 auto;background:var(--bone);border-radius:28px;box-shadow:var(--shadow-pop),0 0 0 1px rgba(255,255,255,.06);overflow:hidden;}
       .main{padding-top:var(--sp-6);padding-bottom:var(--sp-10);}
       .footer{background:transparent;color:rgba(255,255,255,.25);padding-bottom:var(--sp-10);}
       .footer a{color:rgba(170,255,4,.6);}
+      .task-2col{grid-template-columns:1fr 160px;}
     }
   </style>
 </head>
 <body>
-
 <div class="app">
 
-  <!-- HEADER -->
   <header class="header">
     <a class="header-logo" href="https://chekku.au" aria-label="ChekkU home">
       <img class="logo-wordmark" src="../assets/chekku_light.svg" alt="ChekkU">
     </a>
   </header>
 
-  <!-- PROGRESS (hidden on gate + confirm) -->
   <div class="progress-shell hidden" id="progress-shell">
-    <div class="progress-track" id="progress-track">
-      <!-- dots injected by JS -->
-    </div>
+    <div class="progress-track" id="progress-track"></div>
   </div>
 
   <div class="card-shell">
     <main class="main">
 
-      <!-- ══════════════════════════════════════
-           GATE — "Do you have a SWMS?"
-      ══════════════════════════════════════ -->
+      <!-- GATE -->
       <section class="screen active" id="screen-gate">
         <div class="gate-hero">
           <div class="gate-icon">
@@ -483,7 +246,6 @@
           <h1 class="gate-heading">Do you have a SWMS?</h1>
           <p class="gate-body">A Safe Work Method Statement is required before you can start on site. Let us know where you're at.</p>
         </div>
-
         <div class="branch-grid">
           <button class="branch-card" id="gate-yes" onclick="selectGate('yes')" type="button">
             <div class="bi"><span class="material-icons-outlined">upload_file</span></div>
@@ -493,7 +255,6 @@
             </div>
             <div class="br"></div>
           </button>
-
           <button class="branch-card" id="gate-no" onclick="selectGate('no')" type="button">
             <div class="bi"><span class="material-icons-outlined">note_add</span></div>
             <div class="bb">
@@ -503,7 +264,6 @@
             <div class="br"></div>
           </button>
         </div>
-
         <div class="btn-stack">
           <button class="btn btn-primary" id="btn-gate-next" onclick="gateNext()" type="button" disabled>
             Get started
@@ -512,15 +272,11 @@
         </div>
       </section>
 
-      <!-- ══════════════════════════════════════
-           PATH A — Step 1: Upload SWMS
-           (shown when gate = yes)
-      ══════════════════════════════════════ -->
+      <!-- PATH A: Upload -->
       <section class="screen" id="screen-a1">
         <div class="eyebrow">Step 1 of 1 — Upload your SWMS</div>
         <h2 class="screen-heading">Upload your SWMS.</h2>
         <p class="screen-body">PDF, Word or image accepted. Our team reviews and confirms within 1 business day.</p>
-
         <div class="card">
           <div class="field">
             <label class="field-label" for="a-name">Your full name <span class="req">*</span></label>
@@ -537,28 +293,18 @@
             <div class="select-wrap">
               <select id="a-trade">
                 <option value="">Select your trade...</option>
-                <option value="electrician">Electrician</option>
-                <option value="plumber">Plumber / Gas Fitter</option>
-                <option value="carpenter">Carpenter / Joiner</option>
-                <option value="painter">Painter / Decorator</option>
-                <option value="concreter">Concreter</option>
-                <option value="plasterer">Plasterer</option>
-                <option value="roofer">Roofer</option>
-                <option value="hvac">HVAC / Refrigeration</option>
-                <option value="tiler">Tiler</option>
-                <option value="welder">Welder / Boilermaker</option>
-                <option value="landscaper">Landscaper</option>
-                <option value="other">Other trade</option>
+                <option>Electrician</option><option>Plumber / Gas Fitter</option>
+                <option>Carpenter / Joiner</option><option>Painter / Decorator</option>
+                <option>Concreter</option><option>Plasterer</option><option>Roofer</option>
+                <option>HVAC / Refrigeration</option><option>Tiler</option>
+                <option>Welder / Boilermaker</option><option>Landscaper</option><option>Other trade</option>
               </select>
             </div>
             <div class="ferr" id="ea-trade">Please select your trade type.</div>
           </div>
         </div>
-
         <div class="card">
-          <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()"
-               role="button" tabindex="0"
-               onkeydown="if(event.key==='Enter'||event.key===' ')document.getElementById('file-input').click()">
+          <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')document.getElementById('file-input').click()">
             <div class="uiw"><span class="material-icons-outlined" id="uicon">cloud_upload</span></div>
             <div class="ut" id="utitle">Tap to upload your SWMS</div>
             <div class="uh" id="uhint">Or drag and drop here</div>
@@ -577,44 +323,41 @@
           </div>
           <div class="ferr" id="ea-file" style="margin-top:8px">Please upload your SWMS document.</div>
         </div>
-
         <div class="card">
           <div class="field">
             <label class="field-label" for="a-notes">Notes for our team <span class="opt">(optional)</span></label>
             <textarea id="a-notes" placeholder="Anything useful — e.g. site address, tasks covered, expiry date, etc."></textarea>
           </div>
         </div>
-
         <div class="btn-stack">
           <button class="btn btn-primary" onclick="submitUpload()" type="button">
-            Submit SWMS
-            <span class="material-icons-outlined bicon">send</span>
+            Submit SWMS <span class="material-icons-outlined bicon">send</span>
           </button>
           <button class="btn btn-ghost" onclick="goGate()" type="button">
-            <span class="material-icons-outlined bicon">arrow_back</span>
-            Back
+            <span class="material-icons-outlined bicon">arrow_back</span> Back
           </button>
         </div>
       </section>
 
-      <!-- ══════════════════════════════════════
-           PATH B — Step 1: Your Details
-           (shown when gate = no)
-      ══════════════════════════════════════ -->
+      <!-- PATH B STEP 1: Business details + logo -->
       <section class="screen" id="screen-b1">
-        <div class="eyebrow">Step 1 of 2 — About you</div>
+        <div class="eyebrow">Step 1 of 4 — About your business</div>
         <h2 class="screen-heading">Let's get you sorted.</h2>
-        <p class="screen-body">Takes 2 minutes. We'll handle the paperwork — you stay on the tools.</p>
-
+        <p class="screen-body">Takes about 4 minutes. We'll handle the paperwork — you stay on the tools.</p>
         <div class="card">
           <div class="field">
-            <label class="field-label" for="b-name">Full name <span class="req">*</span></label>
+            <label class="field-label" for="b-name">Your full name <span class="req">*</span></label>
             <input type="text" id="b-name" placeholder="e.g. Dave Williams" autocomplete="name">
             <div class="ferr" id="eb-name">Please enter your full name.</div>
           </div>
           <div class="field">
+            <label class="field-label" for="b-phone">Phone number <span class="req">*</span></label>
+            <input type="tel" id="b-phone" placeholder="e.g. 0412 345 678" autocomplete="tel" inputmode="tel">
+            <div class="ferr" id="eb-phone">Please enter your phone number.</div>
+          </div>
+          <div class="field">
             <label class="field-label" for="b-company">Business / company name <span class="req">*</span></label>
-            <input type="text" id="b-company" placeholder="e.g. Williams Electrical Pty Ltd" autocomplete="organization">
+            <input type="text" id="b-company" placeholder="e.g. Williams Electrical Pty Ltd" autocomplete="organization" oninput="updateLogoPreview()">
             <div class="ferr" id="eb-company">Please enter your business name.</div>
           </div>
           <div class="field">
@@ -627,116 +370,240 @@
             <div class="select-wrap">
               <select id="b-trade">
                 <option value="">Select your trade...</option>
-                <option value="electrician">Electrician</option>
-                <option value="plumber">Plumber / Gas Fitter</option>
-                <option value="carpenter">Carpenter / Joiner</option>
-                <option value="painter">Painter / Decorator</option>
-                <option value="concreter">Concreter</option>
-                <option value="plasterer">Plasterer</option>
-                <option value="roofer">Roofer</option>
-                <option value="hvac">HVAC / Refrigeration</option>
-                <option value="tiler">Tiler</option>
-                <option value="welder">Welder / Boilermaker</option>
-                <option value="landscaper">Landscaper</option>
-                <option value="other">Other trade</option>
+                <option>Electrician</option><option>Plumber / Gas Fitter</option>
+                <option>Carpenter / Joiner</option><option>Painter / Decorator</option>
+                <option>Concreter</option><option>Plasterer</option><option>Roofer</option>
+                <option>HVAC / Refrigeration</option><option>Tiler</option>
+                <option>Welder / Boilermaker</option><option>Landscaper</option><option>Other trade</option>
               </select>
             </div>
             <div class="ferr" id="eb-trade">Please select your trade type.</div>
           </div>
         </div>
 
+        <div class="card">
+          <div class="field" style="margin-bottom:var(--sp-4)">
+            <div class="field-label" style="margin-bottom:var(--sp-3)">Business logo <span class="opt">(optional)</span></div>
+            <div class="logo-toggle">
+              <button class="logo-toggle-btn active" id="logo-btn-text" onclick="setLogoMode('text')" type="button">
+                <span class="material-icons-outlined">text_fields</span> Business name
+              </button>
+              <button class="logo-toggle-btn" id="logo-btn-upload" onclick="setLogoMode('upload')" type="button">
+                <span class="material-icons-outlined">image</span> Upload logo
+              </button>
+            </div>
+          </div>
+          <div id="logo-text-wrap">
+            <div class="logo-preview" id="logo-preview">
+              <span class="logo-preview-empty">Enter your business name above to preview</span>
+            </div>
+          </div>
+          <div id="logo-upload-wrap" style="display:none;">
+            <div class="logo-upload-compact" id="logo-upload-zone" onclick="document.getElementById('logo-input').click()">
+              <span class="material-icons-outlined" id="logo-uicon" style="font-size:28px;color:var(--pine-400);display:block;margin-bottom:8px;">add_photo_alternate</span>
+              <div style="font-size:14px;font-weight:600;color:var(--fg-2)" id="logo-utitle">Tap to upload your logo</div>
+              <div style="font-size:12px;color:var(--fg-3);margin-top:4px;">PNG · JPG · SVG — max 5 MB</div>
+              <img id="logo-img-preview" class="logo-img-preview" style="display:none;margin-top:12px;" alt="Logo preview">
+            </div>
+            <input type="file" id="logo-input" accept="image/*" onchange="handleLogoFile(event)">
+          </div>
+        </div>
+
         <div class="btn-stack">
           <button class="btn btn-primary" onclick="b1Next()" type="button">
-            Next — Work details
-            <span class="material-icons-outlined bicon">arrow_forward</span>
+            Next — Job details <span class="material-icons-outlined bicon">arrow_forward</span>
           </button>
           <button class="btn btn-ghost" onclick="goGate()" type="button">
-            <span class="material-icons-outlined bicon">arrow_back</span>
-            Back
+            <span class="material-icons-outlined bicon">arrow_back</span> Back
           </button>
         </div>
       </section>
 
-      <!-- ══════════════════════════════════════
-           PATH B — Step 2: Generate SWMS
-      ══════════════════════════════════════ -->
+      <!-- PATH B STEP 2: Job details -->
       <section class="screen" id="screen-b2">
-        <div class="eyebrow">Step 2 of 2 — Your work</div>
-        <h2 class="screen-heading">Tell us about your work.</h2>
-        <p class="screen-body">Plain English is fine — we'll build the SWMS from your details.</p>
-
+        <div class="eyebrow">Step 2 of 4 — Job details</div>
+        <h2 class="screen-heading">Tell us about the job.</h2>
+        <p class="screen-body">These details go on your SWMS document.</p>
         <div class="card">
           <div class="field">
+            <label class="field-label" for="b-activity">Activity / task title <span class="req">*</span></label>
+            <input type="text" id="b-activity" placeholder="e.g. Residential switchboard installation">
+            <div class="ferr" id="eb-activity">Please enter the activity or task title.</div>
+          </div>
+          <div class="field">
             <label class="field-label" for="b-site">Job site address <span class="req">*</span></label>
-            <input type="text" id="b-site" placeholder="e.g. 42 Builder St, Sydney NSW 2000" autocomplete="off">
+            <input type="text" id="b-site" placeholder="e.g. 42 Builder St, Sydney NSW 2000">
             <div class="ferr" id="eb-site">Please enter the job site address.</div>
           </div>
           <div class="field">
-            <label class="field-label" for="b-desc">Describe the work being done <span class="req">*</span></label>
-            <textarea id="b-desc" placeholder="e.g. Installing a new switchboard and running conduit in a two-storey residential home."></textarea>
-            <div class="ferr" id="eb-desc">Please describe the work.</div>
+            <label class="field-label" for="b-startdate">Work start date <span class="req">*</span></label>
+            <input type="date" id="b-startdate">
+            <div class="ferr" id="eb-startdate">Please select a start date.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="clabel">Principal Contractor</div>
+          <div class="chint">The company or person responsible for the site.</div>
+          <div class="field">
+            <label class="field-label" for="b-pc-name">PC name <span class="req">*</span></label>
+            <input type="text" id="b-pc-name" placeholder="e.g. Smith Constructions Pty Ltd">
+            <div class="ferr" id="eb-pc-name">Please enter the principal contractor name.</div>
+          </div>
+          <div class="field">
+            <label class="field-label" for="b-pc-address">PC address <span class="opt">(optional)</span></label>
+            <input type="text" id="b-pc-address" placeholder="e.g. 1 Main St, Melbourne VIC 3000">
+          </div>
+          <div class="field">
+            <label class="field-label" for="b-pc-phone">PC phone <span class="opt">(optional)</span></label>
+            <input type="tel" id="b-pc-phone" placeholder="e.g. 03 9000 0000" inputmode="tel">
+          </div>
+        </div>
+        <div class="card">
+          <div class="field">
+            <label class="field-label" for="b-responsible">Responsible person on site <span class="req">*</span></label>
+            <input type="text" id="b-responsible" placeholder="Full name of site supervisor">
+            <div class="ferr" id="eb-responsible">Please enter the responsible person's name.</div>
+          </div>
+        </div>
+        <div class="btn-stack">
+          <button class="btn btn-primary" onclick="b2Next()" type="button">
+            Next — Safety profile <span class="material-icons-outlined bicon">arrow_forward</span>
+          </button>
+          <button class="btn btn-ghost" onclick="goB1()" type="button">
+            <span class="material-icons-outlined bicon">arrow_back</span> Back
+          </button>
+        </div>
+      </section>
+
+      <!-- PATH B STEP 3: Safety checkboxes -->
+      <section class="screen" id="screen-b3">
+        <div class="eyebrow">Step 3 of 4 — Safety profile</div>
+        <h2 class="screen-heading">Hazards and safety requirements.</h2>
+        <p class="screen-body">Tick everything that applies to this job. You can always update these later.</p>
+
+        <div class="card">
+          <div class="sec-divider">Section 1 — General hazards</div>
+          <div class="chint">All hazards present on or near the work site.</div>
+          <div class="check-grid" id="hazards-grid">
+            <label class="check-item"><input type="checkbox" value="electrical_equip"><div class="cbox"></div><span class="ctext">Electrical equipment</span></label>
+            <label class="check-item"><input type="checkbox" value="elevated"><div class="cbox"></div><span class="ctext">Elevated work</span></label>
+            <label class="check-item"><input type="checkbox" value="slips_trips"><div class="cbox"></div><span class="ctext">Slips, trips, falls</span></label>
+            <label class="check-item"><input type="checkbox" value="hazardous_sub"><div class="cbox"></div><span class="ctext">Hazardous substances</span></label>
+            <label class="check-item"><input type="checkbox" value="hot_work"><div class="cbox"></div><span class="ctext">Hot work</span></label>
+            <label class="check-item"><input type="checkbox" value="manual_tasks"><div class="cbox"></div><span class="ctext">Manual tasks</span></label>
+            <label class="check-item"><input type="checkbox" value="outdoor"><div class="cbox"></div><span class="ctext">Outdoor work</span></label>
+            <label class="check-item"><input type="checkbox" value="remote"><div class="cbox"></div><span class="ctext">Remote / isolated</span></label>
+            <label class="check-item"><input type="checkbox" value="noise_vib"><div class="cbox"></div><span class="ctext">Noise and vibration</span></label>
+            <label class="check-item"><input type="checkbox" value="vegetation"><div class="cbox"></div><span class="ctext">Native vegetation</span></label>
+            <label class="check-item"><input type="checkbox" value="air_quality"><div class="cbox"></div><span class="ctext">Air quality</span></label>
+            <label class="check-item"><input type="checkbox" value="waste"><div class="cbox"></div><span class="ctext">Waste management</span></label>
+            <label class="check-item"><input type="checkbox" value="vehicles"><div class="cbox"></div><span class="ctext">Vehicle movement</span></label>
+            <label class="check-item"><input type="checkbox" value="fuels"><div class="cbox"></div><span class="ctext">Fuels / chemicals</span></label>
+            <label class="check-item"><input type="checkbox" value="fauna"><div class="cbox"></div><span class="ctext">Terrestrial fauna</span></label>
+            <label class="check-item"><input type="checkbox" value="waterways"><div class="cbox"></div><span class="ctext">Waterways and soils</span></label>
+            <label class="check-item"><input type="checkbox" value="cultural"><div class="cbox"></div><span class="ctext">Cultural heritage</span></label>
           </div>
         </div>
 
         <div class="card">
-          <div class="clabel">High-risk activities on this job</div>
-          <div class="chint">Tick everything that applies.</div>
-          <div class="check-grid">
-            <label class="check-item"><input type="checkbox" value="heights"><div class="cbox"></div><span class="ctext">Working at heights</span></label>
-            <label class="check-item"><input type="checkbox" value="electrical"><div class="cbox"></div><span class="ctext">Live electrical</span></label>
+          <div class="sec-divider" style="border-top:none;margin-top:0;padding-top:0;">Section 2 — High Risk Construction Work (HRCW)</div>
+          <div class="chint">Tick all high-risk activities that apply.</div>
+          <div class="check-grid" id="hrcw-grid">
             <label class="check-item"><input type="checkbox" value="confined"><div class="cbox"></div><span class="ctext">Confined spaces</span></label>
-            <label class="check-item"><input type="checkbox" value="hot_work"><div class="cbox"></div><span class="ctext">Hot work / welding</span></label>
-            <label class="check-item"><input type="checkbox" value="lifting"><div class="cbox"></div><span class="ctext">Heavy lifting</span></label>
-            <label class="check-item"><input type="checkbox" value="chemicals"><div class="cbox"></div><span class="ctext">Chemical handling</span></label>
-            <label class="check-item"><input type="checkbox" value="excavation"><div class="cbox"></div><span class="ctext">Excavation</span></label>
-            <label class="check-item"><input type="checkbox" value="traffic"><div class="cbox"></div><span class="ctext">Traffic management</span></label>
+            <label class="check-item"><input type="checkbox" value="mobile_plant"><div class="cbox"></div><span class="ctext">Mobile plant</span></label>
+            <label class="check-item"><input type="checkbox" value="demolition"><div class="cbox"></div><span class="ctext">Demolition</span></label>
+            <label class="check-item"><input type="checkbox" value="asbestos"><div class="cbox"></div><span class="ctext">Asbestos disturbance</span></label>
+            <label class="check-item"><input type="checkbox" value="explosives"><div class="cbox"></div><span class="ctext">Using explosives</span></label>
+            <label class="check-item"><input type="checkbox" value="diving"><div class="cbox"></div><span class="ctext">Diving work</span></label>
+            <label class="check-item"><input type="checkbox" value="extreme_temp"><div class="cbox"></div><span class="ctext">Extreme temperature</span></label>
+            <label class="check-item"><input type="checkbox" value="tilt_up"><div class="cbox"></div><span class="ctext">Tilt-up / pre-cast</span></label>
+            <label class="check-item"><input type="checkbox" value="pressurised"><div class="cbox"></div><span class="ctext">Pressurised lines</span></label>
+            <label class="check-item"><input type="checkbox" value="structural"><div class="cbox"></div><span class="ctext">Structural alterations</span></label>
+            <label class="check-item"><input type="checkbox" value="fall_2m"><div class="cbox"></div><span class="ctext">Fall risk &gt; 2m</span></label>
+            <label class="check-item"><input type="checkbox" value="depths_1_5m"><div class="cbox"></div><span class="ctext">Depths &gt; 1.5m</span></label>
+            <label class="check-item"><input type="checkbox" value="contaminated"><div class="cbox"></div><span class="ctext">Contaminated atmosphere</span></label>
+            <label class="check-item"><input type="checkbox" value="road_rail"><div class="cbox"></div><span class="ctext">Adjacent road / rail</span></label>
+            <label class="check-item"><input type="checkbox" value="water_drowning"><div class="cbox"></div><span class="ctext">Near water (drowning)</span></label>
           </div>
         </div>
 
         <div class="card">
-          <div class="clabel">Required PPE</div>
-          <div class="chint">Select all PPE required on this site.</div>
-          <div class="check-grid">
+          <div class="sec-divider" style="border-top:none;margin-top:0;padding-top:0;">Section 3 — PPE required</div>
+          <div class="chint">Select all PPE required for this job.</div>
+          <div class="check-grid" id="ppe-grid">
+            <label class="check-item"><input type="checkbox" value="foot"><div class="cbox"></div><span class="ctext">Safety boots</span></label>
             <label class="check-item"><input type="checkbox" value="hard_hat"><div class="cbox"></div><span class="ctext">Hard hat</span></label>
-            <label class="check-item"><input type="checkbox" value="hi_vis"><div class="cbox"></div><span class="ctext">Hi-vis vest 🦺</span></label>
-            <label class="check-item"><input type="checkbox" value="boots"><div class="cbox"></div><span class="ctext">Safety boots</span></label>
-            <label class="check-item"><input type="checkbox" value="gloves"><div class="cbox"></div><span class="ctext">Gloves</span></label>
-            <label class="check-item"><input type="checkbox" value="glasses"><div class="cbox"></div><span class="ctext">Safety glasses</span></label>
+            <label class="check-item"><input type="checkbox" value="hi_vis"><div class="cbox"></div><span class="ctext">Hi-vis clothing</span></label>
+            <label class="check-item"><input type="checkbox" value="eye"><div class="cbox"></div><span class="ctext">Eye protection</span></label>
+            <label class="check-item"><input type="checkbox" value="hearing"><div class="cbox"></div><span class="ctext">Hearing protection</span></label>
+            <label class="check-item"><input type="checkbox" value="hand"><div class="cbox"></div><span class="ctext">Gloves</span></label>
+            <label class="check-item"><input type="checkbox" value="face"><div class="cbox"></div><span class="ctext">Face shield</span></label>
+            <label class="check-item"><input type="checkbox" value="breathing"><div class="cbox"></div><span class="ctext">Respirator</span></label>
+            <label class="check-item"><input type="checkbox" value="protective_clothing"><div class="cbox"></div><span class="ctext">Protective clothing</span></label>
+            <label class="check-item"><input type="checkbox" value="sun"><div class="cbox"></div><span class="ctext">Sun protection</span></label>
             <label class="check-item"><input type="checkbox" value="harness"><div class="cbox"></div><span class="ctext">Safety harness</span></label>
-            <label class="check-item"><input type="checkbox" value="respirator"><div class="cbox"></div><span class="ctext">P2 respirator</span></label>
-            <label class="check-item"><input type="checkbox" value="ear_pro"><div class="cbox"></div><span class="ctext">Ear protection</span></label>
           </div>
         </div>
 
         <div class="card">
-          <div class="field">
-            <label class="field-label" for="b-super">Site supervisor / responsible person <span class="req">*</span></label>
-            <input type="text" id="b-super" placeholder="Full name" autocomplete="off">
-            <div class="ferr" id="eb-super">Please enter the supervisor name.</div>
+          <div class="sec-divider" style="border-top:none;margin-top:0;padding-top:0;">Section 15 — Permits required</div>
+          <div class="check-grid" id="permit-grid">
+            <label class="check-item"><input type="checkbox" value="not_applicable"><div class="cbox"></div><span class="ctext">Not applicable</span></label>
+            <label class="check-item"><input type="checkbox" value="hot_work_permit"><div class="cbox"></div><span class="ctext">Hot work permit</span></label>
+            <label class="check-item"><input type="checkbox" value="confined_permit"><div class="cbox"></div><span class="ctext">Confined space permit</span></label>
+            <label class="check-item"><input type="checkbox" value="council_permit"><div class="cbox"></div><span class="ctext">Council permit</span></label>
+            <label class="check-item"><input type="checkbox" value="other_permit"><div class="cbox"></div><span class="ctext">Other permit</span></label>
           </div>
-          <div class="field">
-            <label class="field-label" for="b-workers">Number of workers on site <span class="req">*</span></label>
-            <div class="select-wrap">
-              <select id="b-workers">
-                <option value="">Select...</option>
-                <option value="1">Just me (1)</option>
-                <option value="2-3">2–3 workers</option>
-                <option value="4-10">4–10 workers</option>
-                <option value="11+">11+ workers</option>
-              </select>
-            </div>
-            <div class="ferr" id="eb-workers">Please select the number of workers.</div>
+          <div class="sec-divider">Section 16 — Plant and equipment</div>
+          <div class="check-grid" id="plant-grid">
+            <label class="check-item"><input type="checkbox" value="electrical_leads"><div class="cbox"></div><span class="ctext">Electrical tools / leads</span></label>
+            <label class="check-item"><input type="checkbox" value="hand_tools"><div class="cbox"></div><span class="ctext">Hand tools</span></label>
+            <label class="check-item"><input type="checkbox" value="ladders"><div class="cbox"></div><span class="ctext">Ladders</span></label>
+            <label class="check-item"><input type="checkbox" value="mobile_plant_equip"><div class="cbox"></div><span class="ctext">Mobile plant</span></label>
+            <label class="check-item"><input type="checkbox" value="other_plant"><div class="cbox"></div><span class="ctext">Other equipment</span></label>
           </div>
         </div>
 
         <div class="btn-stack">
-          <button class="btn btn-primary" onclick="b2Submit()" type="button">
-            Generate my SWMS
-            <span class="material-icons-outlined bicon">auto_awesome</span>
+          <button class="btn btn-primary" onclick="b3Next()" type="button">
+            Next — Tasks and team <span class="material-icons-outlined bicon">arrow_forward</span>
           </button>
-          <button class="btn btn-ghost" onclick="show('screen-b1')" type="button">
-            <span class="material-icons-outlined bicon">arrow_back</span>
-            Back
+          <button class="btn btn-ghost" onclick="goB2()" type="button">
+            <span class="material-icons-outlined bicon">arrow_back</span> Back
+          </button>
+        </div>
+      </section>
+
+      <!-- PATH B STEP 4: Tasks and workers -->
+      <section class="screen" id="screen-b4">
+        <div class="eyebrow">Step 4 of 4 — Tasks and team</div>
+        <h2 class="screen-heading">Job tasks and your team.</h2>
+        <p class="screen-body">Add each job task and the workers on site. At least one task is required.</p>
+
+        <div class="card">
+          <div class="clabel">Job tasks</div>
+          <div class="chint">Break the work into steps. Add a row per task.</div>
+          <div id="tasks-container"></div>
+          <button class="add-row-btn" onclick="addTask()" type="button">
+            <span class="material-icons-outlined">add_circle_outline</span> Add another task
+          </button>
+        </div>
+
+        <div class="card">
+          <div class="clabel">Workers on site</div>
+          <div class="chint">Add each person who will sign the SWMS.</div>
+          <div id="workers-container"></div>
+          <button class="add-row-btn" onclick="addWorker()" type="button">
+            <span class="material-icons-outlined">person_add</span> Add another worker
+          </button>
+        </div>
+
+        <div class="btn-stack">
+          <button class="btn btn-primary" onclick="b4Submit()" type="button">
+            Generate my SWMS <span class="material-icons-outlined bicon">auto_awesome</span>
+          </button>
+          <button class="btn btn-ghost" onclick="goB3()" type="button">
+            <span class="material-icons-outlined bicon">arrow_back</span> Back
           </button>
         </div>
       </section>
@@ -744,13 +611,11 @@
       <!-- LOADING -->
       <div id="loading">
         <div class="spinner"></div>
-        <div id="lt">Submitting...</div>
-        <div id="ls">Hang tight — won't be long.</div>
+        <div id="lt">Generating your SWMS...</div>
+        <div id="ls">Applying your details to the template</div>
       </div>
 
-      <!-- ══════════════════════════════════════
-           CONFIRM
-      ══════════════════════════════════════ -->
+      <!-- CONFIRM -->
       <section class="screen" id="screen-confirm">
         <div class="success-hero">
           <div class="success-badge">
@@ -760,13 +625,20 @@
           <p class="success-body" id="conf-body">Our team will review and be in touch within 1 business day.</p>
         </div>
 
+        <div id="swms-download-block" class="download-block" style="display:none;">
+          <a id="swms-download-link" class="btn btn-primary" href="#" download="SWMS.html" style="text-decoration:none;">
+            <span class="material-icons-outlined bicon">download</span> Download your SWMS
+          </a>
+          <div class="download-note">Open in browser then use Print &rsaquo; Save as PDF</div>
+        </div>
+
         <div class="card">
           <div class="clabel2">What happens next</div>
           <div class="ns">
             <div class="nn">1</div>
             <div>
-              <div class="nt">Confirmation email sent</div>
-              <div class="nd">A copy has been sent to your email for your records.</div>
+              <div class="nt" id="conf-step1-title">Confirmation email sent</div>
+              <div class="nd" id="conf-step1-desc">A copy has been sent to your email for your records.</div>
             </div>
           </div>
           <div class="ns">
@@ -779,8 +651,8 @@
           <div class="ns">
             <div class="nn">3</div>
             <div>
-              <div class="nt" id="conf-step3-title">Approval confirmed</div>
-              <div class="nd" id="conf-step3-desc">Once approved, you get your ChekkU compliance badge — ready to show on site.</div>
+              <div class="nt">Approval confirmed</div>
+              <div class="nd">Once approved, you get your ChekkU compliance badge — ready to show on site.</div>
             </div>
           </div>
         </div>
@@ -792,8 +664,7 @@
               <div class="promo-title">While you wait — explore ChekkU</div>
               <div class="promo-desc">1,000+ templates, job leads, training and more. Everything sorted in one place.</div>
               <a href="https://chekku.au" class="promo-link">
-                Explore ChekkU
-                <span class="material-icons-outlined">arrow_forward</span>
+                Explore ChekkU <span class="material-icons-outlined">arrow_forward</span>
               </a>
             </div>
           </div>
@@ -805,264 +676,738 @@
 
   <footer class="footer">
     Need help? <a href="mailto:compliance@chekku.au">compliance@chekku.au</a>
-    &nbsp;·&nbsp;<a href="#">Privacy</a>&nbsp;·&nbsp;<a href="#">Terms</a>
+    &nbsp;&middot;&nbsp;<a href="#">Privacy</a>&nbsp;&middot;&nbsp;<a href="#">Terms</a>
   </footer>
 </div>
 
 <script>
-  /* ─── STATE ────────────────────────────────────── */
-  var gate = null;   // 'yes' | 'no'
-  var selectedFile = null;
+/* ── STATE ─────────────────────────────────────────── */
+var gate = null;
+var selectedFile = null;
+var logoMode = "text";
+var logoDataUrl = null;
+var taskIds = [0];
+var maxTaskId = 1;
+var workerIds = [0];
+var maxWorkerId = 1;
 
-  /* ─── SCREEN SWITCH ────────────────────────────── */
-  function show(id) {
-    document.querySelectorAll('.screen').forEach(function(s) {
-      s.classList.remove('active');
+/* ── LABEL MAPS ────────────────────────────────────── */
+var HAZARD_ITEMS = [
+  {value:"electrical_equip", label:"Electrical equipment"},
+  {value:"elevated",         label:"Elevated work (working at heights)"},
+  {value:"slips_trips",      label:"Slips, trips and falls"},
+  {value:"hazardous_sub",    label:"Hazardous substances"},
+  {value:"hot_work",         label:"Hot work (welding, grinding)"},
+  {value:"manual_tasks",     label:"Hazardous manual tasks"},
+  {value:"outdoor",          label:"Outdoor work"},
+  {value:"remote",           label:"Remote or isolated work"},
+  {value:"noise_vib",        label:"Noise and vibration"},
+  {value:"vegetation",       label:"Native vegetation and weeds"},
+  {value:"air_quality",      label:"Air quality"},
+  {value:"waste",            label:"Waste management"},
+  {value:"vehicles",         label:"Vehicle movement"},
+  {value:"fuels",            label:"Fuels, oils and chemicals"},
+  {value:"fauna",            label:"Terrestrial fauna"},
+  {value:"waterways",        label:"Waterways and soils"},
+  {value:"cultural",         label:"Cultural heritage"}
+];
+var HRCW_ITEMS = [
+  {value:"confined",     label:"Work in confined spaces"},
+  {value:"mobile_plant", label:"Mobile plant movement"},
+  {value:"demolition",   label:"Demolition of load-bearing structure"},
+  {value:"asbestos",     label:"Disturbance of asbestos"},
+  {value:"explosives",   label:"Using explosives"},
+  {value:"diving",       label:"Diving work"},
+  {value:"extreme_temp", label:"Artificial extremes of temperature"},
+  {value:"tilt_up",      label:"Tilt-up or pre-cast concrete"},
+  {value:"pressurised",  label:"Pressurised gas, chemical or fuel lines"},
+  {value:"structural",   label:"Structural alterations requiring temporary support"},
+  {value:"fall_2m",      label:"Risk of falling from height greater than 2m"},
+  {value:"depths_1_5m",  label:"Working at depths greater than 1.5m"},
+  {value:"contaminated", label:"Contaminated or flammable atmosphere"},
+  {value:"road_rail",    label:"Adjacent to road, railway or shipping lane"},
+  {value:"water_drowning",label:"In or near water (drowning risk)"}
+];
+var PPE_ITEMS = [
+  {value:"foot",               label:"Foot protection (safety boots)"},
+  {value:"hard_hat",           label:"Head protection (hard hat)"},
+  {value:"hi_vis",             label:"High visibility clothing"},
+  {value:"eye",                label:"Eye protection (glasses/goggles)"},
+  {value:"hearing",            label:"Hearing protection"},
+  {value:"hand",               label:"Hand protection (gloves)"},
+  {value:"face",               label:"Face protection (face shield)"},
+  {value:"breathing",          label:"Breathing protection (respirator)"},
+  {value:"protective_clothing",label:"Protective clothing"},
+  {value:"sun",                label:"Sun protection"},
+  {value:"harness",            label:"Safety harness"}
+];
+var PERMIT_ITEMS = [
+  {value:"not_applicable",  label:"Not applicable"},
+  {value:"hot_work_permit", label:"Hot work permit"},
+  {value:"confined_permit", label:"Confined space permit"},
+  {value:"council_permit",  label:"Local council permit"},
+  {value:"other_permit",    label:"Other permit"}
+];
+var PLANT_ITEMS = [
+  {value:"electrical_leads",  label:"Electrical tools and leads (tested and tagged)"},
+  {value:"hand_tools",        label:"Hand tools"},
+  {value:"ladders",           label:"Ladders"},
+  {value:"mobile_plant_equip",label:"Mobile plant"},
+  {value:"other_plant",       label:"Other plant or equipment"}
+];
+
+/* ── SCREEN SWITCH ─────────────────────────────────── */
+function show(id) {
+  document.querySelectorAll(".screen").forEach(function(s) { s.classList.remove("active"); });
+  document.getElementById("loading").classList.remove("active");
+  var el = document.getElementById(id);
+  if (el) el.classList.add("active");
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+/* ── PROGRESS ──────────────────────────────────────── */
+function setProgress(steps, active) {
+  var shell = document.getElementById("progress-shell");
+  var track = document.getElementById("progress-track");
+  if (!steps) { shell.classList.add("hidden"); return; }
+  shell.classList.remove("hidden");
+  track.innerHTML = "";
+  for (var i = 1; i <= steps; i++) {
+    var dot = document.createElement("div");
+    dot.className = "p-dot";
+    dot.textContent = i < steps ? String(i) : "";
+    if (i < active) dot.dataset.state = "done";
+    else if (i === active) dot.dataset.state = "active";
+    var step = document.createElement("div");
+    step.className = "p-step";
+    step.appendChild(dot);
+    track.appendChild(step);
+    if (i < steps) {
+      var line = document.createElement("div");
+      line.className = "p-line";
+      if (i < active) line.dataset.state = "done";
+      track.appendChild(line);
+    }
+  }
+}
+
+/* ── GATE ──────────────────────────────────────────── */
+function selectGate(choice) {
+  gate = choice;
+  document.getElementById("gate-yes").classList.toggle("selected", choice === "yes");
+  document.getElementById("gate-no").classList.toggle("selected", choice === "no");
+  document.getElementById("btn-gate-next").disabled = false;
+}
+function gateNext() {
+  if (!gate) return;
+  if (gate === "yes") { setProgress(2, 1); show("screen-a1"); }
+  else { setProgress(5, 1); show("screen-b1"); }
+}
+function goGate() { setProgress(null); show("screen-gate"); }
+function goB1() { setProgress(5, 1); show("screen-b1"); }
+function goB2() { setProgress(5, 2); show("screen-b2"); }
+function goB3() { setProgress(5, 3); show("screen-b3"); }
+
+/* ── VALIDATION HELPERS ────────────────────────────── */
+function isEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+function fe(inputId, errId, invalid) {
+  document.getElementById(inputId).classList.toggle("err", invalid);
+  document.getElementById(errId).classList.toggle("show", invalid);
+  return invalid;
+}
+function clearFe(inputId, errId) {
+  document.getElementById(inputId).classList.remove("err");
+  document.getElementById(errId).classList.remove("show");
+}
+var clearPairs = [
+  ["a-name","ea-name"],["a-email","ea-email"],["a-trade","ea-trade"],
+  ["b-name","eb-name"],["b-phone","eb-phone"],["b-company","eb-company"],["b-email","eb-email"],["b-trade","eb-trade"],
+  ["b-activity","eb-activity"],["b-site","eb-site"],["b-startdate","eb-startdate"],
+  ["b-pc-name","eb-pc-name"],["b-responsible","eb-responsible"]
+];
+clearPairs.forEach(function(pair) {
+  var el = document.getElementById(pair[0]);
+  if (el) el.addEventListener("input", function() { clearFe(pair[0], pair[1]); });
+});
+
+/* ── PATH A: UPLOAD ────────────────────────────────── */
+function handleFile(e) {
+  var f = e.target.files[0]; if (!f) return;
+  selectedFile = f;
+  var mb = (f.size / 1048576).toFixed(1);
+  document.getElementById("fp-name").textContent = f.name;
+  document.getElementById("fp-size").textContent = mb + " MB";
+  document.getElementById("file-pill").classList.add("show");
+  document.getElementById("upload-zone").classList.add("has-file");
+  document.getElementById("uicon").textContent = "check_circle";
+  document.getElementById("utitle").textContent = "Document attached";
+  document.getElementById("uhint").textContent = "Tap to replace";
+  document.getElementById("ea-file").classList.remove("show");
+}
+function removeFile() {
+  selectedFile = null;
+  document.getElementById("file-input").value = "";
+  document.getElementById("file-pill").classList.remove("show");
+  document.getElementById("upload-zone").classList.remove("has-file");
+  document.getElementById("uicon").textContent = "cloud_upload";
+  document.getElementById("utitle").textContent = "Tap to upload your SWMS";
+  document.getElementById("uhint").textContent = "Or drag and drop here";
+}
+var zone = document.getElementById("upload-zone");
+zone.addEventListener("dragover", function(e) { e.preventDefault(); zone.classList.add("drag-over"); });
+zone.addEventListener("dragleave", function() { zone.classList.remove("drag-over"); });
+zone.addEventListener("drop", function(e) {
+  e.preventDefault(); zone.classList.remove("drag-over");
+  var f = e.dataTransfer.files[0]; if (f) handleFile({target:{files:[f]}});
+});
+function submitUpload() {
+  var name = document.getElementById("a-name").value.trim();
+  var email = document.getElementById("a-email").value.trim();
+  var trade = document.getElementById("a-trade").value;
+  var ok = true;
+  if (fe("a-name","ea-name",!name)) ok = false;
+  if (fe("a-email","ea-email",!isEmail(email))) ok = false;
+  if (fe("a-trade","ea-trade",!trade)) ok = false;
+  if (!selectedFile) { document.getElementById("ea-file").classList.add("show"); ok = false; }
+  if (!ok) return;
+  setProgress(2, 2);
+  document.querySelectorAll(".screen").forEach(function(s) { s.classList.remove("active"); });
+  document.getElementById("loading").classList.add("active");
+  document.getElementById("lt").textContent = "Submitting your SWMS...";
+  document.getElementById("ls").textContent = "Uploading to our compliance team";
+  setTimeout(function() {
+    document.getElementById("conf-heading").textContent = "SWMS submitted.";
+    document.getElementById("conf-body").textContent = "Your document is with our compliance team. They will review and confirm approval within 1 business day.";
+    document.getElementById("swms-download-block").style.display = "none";
+    setProgress(null); show("screen-confirm");
+  }, 2200);
+}
+
+/* ── PATH B: LOGO ──────────────────────────────────── */
+function setLogoMode(mode) {
+  logoMode = mode;
+  document.getElementById("logo-btn-text").classList.toggle("active", mode === "text");
+  document.getElementById("logo-btn-upload").classList.toggle("active", mode === "upload");
+  document.getElementById("logo-text-wrap").style.display = mode === "text" ? "" : "none";
+  document.getElementById("logo-upload-wrap").style.display = mode === "upload" ? "" : "none";
+}
+function updateLogoPreview() {
+  var company = document.getElementById("b-company").value.trim();
+  var preview = document.getElementById("logo-preview");
+  if (!company) {
+    preview.innerHTML = "<span class=\"logo-preview-empty\">Enter your business name above to preview</span>";
+    return;
+  }
+  var words = company.split(" ");
+  var initials = "";
+  for (var i = 0; i < Math.min(words.length, 2); i++) {
+    if (words[i].length > 0) initials += words[i][0].toUpperCase();
+  }
+  if (!initials) initials = "CO";
+  preview.innerHTML =
+    "<div style=\"display:flex;align-items:center;gap:14px;\">" +
+      "<div style=\"width:52px;height:52px;background:var(--deep-pine);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:var(--hivis);flex-shrink:0;\">" + initials + "</div>" +
+      "<div style=\"font-size:17px;font-weight:800;color:var(--fg-1);letter-spacing:-0.02em;line-height:1.2;\">" + company + "</div>" +
+    "</div>";
+}
+function handleLogoFile(e) {
+  var f = e.target.files[0]; if (!f) return;
+  var reader = new FileReader();
+  reader.onload = function(ev) {
+    logoDataUrl = ev.target.result;
+    document.getElementById("logo-img-preview").src = logoDataUrl;
+    document.getElementById("logo-img-preview").style.display = "block";
+    document.getElementById("logo-uicon").style.display = "none";
+    document.getElementById("logo-utitle").textContent = "Logo uploaded — tap to replace";
+    document.getElementById("logo-upload-zone").classList.add("has-logo");
+  };
+  reader.readAsDataURL(f);
+}
+
+/* ── PATH B: STEP 1 → 2 ────────────────────────────── */
+function b1Next() {
+  var name = document.getElementById("b-name").value.trim();
+  var phone = document.getElementById("b-phone").value.trim();
+  var company = document.getElementById("b-company").value.trim();
+  var email = document.getElementById("b-email").value.trim();
+  var trade = document.getElementById("b-trade").value;
+  var ok = true;
+  if (fe("b-name","eb-name",!name)) ok = false;
+  if (fe("b-phone","eb-phone",!phone)) ok = false;
+  if (fe("b-company","eb-company",!company)) ok = false;
+  if (fe("b-email","eb-email",!isEmail(email))) ok = false;
+  if (fe("b-trade","eb-trade",!trade)) ok = false;
+  if (ok) { setProgress(5, 2); show("screen-b2"); }
+}
+
+/* ── PATH B: STEP 2 → 3 ────────────────────────────── */
+function b2Next() {
+  var activity = document.getElementById("b-activity").value.trim();
+  var site = document.getElementById("b-site").value.trim();
+  var startdate = document.getElementById("b-startdate").value;
+  var pcname = document.getElementById("b-pc-name").value.trim();
+  var responsible = document.getElementById("b-responsible").value.trim();
+  var ok = true;
+  if (fe("b-activity","eb-activity",!activity)) ok = false;
+  if (fe("b-site","eb-site",!site)) ok = false;
+  if (fe("b-startdate","eb-startdate",!startdate)) ok = false;
+  if (fe("b-pc-name","eb-pc-name",!pcname)) ok = false;
+  if (fe("b-responsible","eb-responsible",!responsible)) ok = false;
+  if (ok) { setProgress(5, 3); show("screen-b3"); }
+}
+
+/* ── PATH B: STEP 3 → 4 ────────────────────────────── */
+function b3Next() { setProgress(5, 4); show("screen-b4"); }
+
+/* ── TASK ROWS ─────────────────────────────────────── */
+function buildTaskRowHtml(id) {
+  return "<div class=\"task-row\" id=\"trow-" + id + "\">" +
+    "<div class=\"trow-header\">" +
+      "<div class=\"trow-num\" id=\"trow-num-" + id + "\">Task 1</div>" +
+      "<button class=\"trow-rm\" id=\"trow-rm-" + id + "\" onclick=\"removeTask(" + id + ")\" type=\"button\" title=\"Remove task\">" +
+        "<span class=\"material-icons-outlined\" style=\"font-size:18px\">delete_outline</span>" +
+      "</button>" +
+    "</div>" +
+    "<div class=\"field\">" +
+      "<label class=\"field-label\">Task description <span class=\"req\">*</span></label>" +
+      "<textarea id=\"t-desc-" + id + "\" placeholder=\"e.g. Install conduit from main switchboard to sub-board\" style=\"min-height:72px;\"></textarea>" +
+    "</div>" +
+    "<div class=\"task-2col\">" +
+      "<div class=\"field\">" +
+        "<label class=\"field-label\">Hazards associated</label>" +
+        "<input type=\"text\" id=\"t-haz-" + id + "\" placeholder=\"e.g. Electric shock, falls\">" +
+      "</div>" +
+      "<div class=\"field\">" +
+        "<label class=\"field-label\">Risk level</label>" +
+        "<div class=\"select-wrap\">" +
+          "<select id=\"t-risk-" + id + "\">" +
+            "<option value=\"1L\">1L - Low</option>" +
+            "<option value=\"2M\" selected>2M - Medium</option>" +
+            "<option value=\"3H\">3H - High</option>" +
+            "<option value=\"4A\">4A - Acute</option>" +
+          "</select>" +
+        "</div>" +
+      "</div>" +
+    "</div>" +
+    "<div class=\"field\">" +
+      "<label class=\"field-label\">Control measures</label>" +
+      "<textarea id=\"t-ctrl-" + id + "\" placeholder=\"e.g. Isolate power, use insulated tools, wear full PPE\" style=\"min-height:72px;\"></textarea>" +
+    "</div>" +
+    "<div class=\"field\">" +
+      "<label class=\"field-label\">Responsible person</label>" +
+      "<input type=\"text\" id=\"t-resp-" + id + "\" placeholder=\"Name or role\">" +
+    "</div>" +
+  "</div>";
+}
+function updateTaskNumbers() {
+  taskIds.forEach(function(id, idx) {
+    var el = document.getElementById("trow-num-" + id);
+    if (el) el.textContent = "Task " + (idx + 1);
+    var rm = document.getElementById("trow-rm-" + id);
+    if (rm) rm.disabled = taskIds.length <= 1;
+  });
+}
+function addTask() {
+  var newId = maxTaskId++;
+  taskIds.push(newId);
+  var wrap = document.createElement("div");
+  wrap.innerHTML = buildTaskRowHtml(newId);
+  document.getElementById("tasks-container").appendChild(wrap.firstChild);
+  updateTaskNumbers();
+}
+function removeTask(id) {
+  if (taskIds.length <= 1) return;
+  taskIds = taskIds.filter(function(x) { return x !== id; });
+  var el = document.getElementById("trow-" + id);
+  if (el) el.parentNode.removeChild(el);
+  updateTaskNumbers();
+}
+
+/* ── WORKER ROWS ───────────────────────────────────── */
+function buildWorkerRowHtml(id) {
+  return "<div class=\"worker-row\" id=\"wrow-" + id + "\">" +
+    "<div class=\"wrow-header\">" +
+      "<div class=\"wrow-label\" id=\"wrow-label-" + id + "\">Worker 1</div>" +
+      "<button class=\"trow-rm\" id=\"wrow-rm-" + id + "\" onclick=\"removeWorker(" + id + ")\" type=\"button\" title=\"Remove worker\">" +
+        "<span class=\"material-icons-outlined\" style=\"font-size:18px\">person_remove</span>" +
+      "</button>" +
+    "</div>" +
+    "<div class=\"field\">" +
+      "<label class=\"field-label\">Full name</label>" +
+      "<input type=\"text\" id=\"w-name-" + id + "\" placeholder=\"e.g. Dave Williams\">" +
+    "</div>" +
+    "<div class=\"field\">" +
+      "<label class=\"field-label\">Role / position</label>" +
+      "<input type=\"text\" id=\"w-role-" + id + "\" placeholder=\"e.g. Electrician\">" +
+    "</div>" +
+    "<div class=\"field\">" +
+      "<label class=\"field-label\">Licences and competencies</label>" +
+      "<input type=\"text\" id=\"w-lic-" + id + "\" placeholder=\"e.g. A-Grade Electrical, White Card, EWP\">" +
+    "</div>" +
+  "</div>";
+}
+function updateWorkerNumbers() {
+  workerIds.forEach(function(id, idx) {
+    var el = document.getElementById("wrow-label-" + id);
+    if (el) el.textContent = "Worker " + (idx + 1);
+    var rm = document.getElementById("wrow-rm-" + id);
+    if (rm) rm.disabled = workerIds.length <= 1;
+  });
+}
+function addWorker() {
+  var newId = maxWorkerId++;
+  workerIds.push(newId);
+  var wrap = document.createElement("div");
+  wrap.innerHTML = buildWorkerRowHtml(newId);
+  document.getElementById("workers-container").appendChild(wrap.firstChild);
+  updateWorkerNumbers();
+}
+function removeWorker(id) {
+  if (workerIds.length <= 1) return;
+  workerIds = workerIds.filter(function(x) { return x !== id; });
+  var el = document.getElementById("wrow-" + id);
+  if (el) el.parentNode.removeChild(el);
+  updateWorkerNumbers();
+}
+
+/* ── COLLECT DATA ──────────────────────────────────── */
+function getCheckedValues(containerId) {
+  var result = [];
+  document.querySelectorAll("#" + containerId + " input[type=checkbox]:checked").forEach(function(cb) {
+    result.push(cb.value);
+  });
+  return result;
+}
+function collectTasks() {
+  var tasks = [];
+  taskIds.forEach(function(id) {
+    var desc = document.getElementById("t-desc-" + id);
+    if (desc) tasks.push({
+      desc: desc.value.trim(),
+      haz:  (document.getElementById("t-haz-" + id) || {value:""}).value.trim(),
+      risk: (document.getElementById("t-risk-" + id) || {value:"2M"}).value,
+      ctrl: (document.getElementById("t-ctrl-" + id) || {value:""}).value.trim(),
+      resp: (document.getElementById("t-resp-" + id) || {value:""}).value.trim()
     });
-    document.getElementById('loading').classList.remove('active');
-    var el = document.getElementById(id);
-    if (el) el.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  return tasks;
+}
+function collectWorkers() {
+  var workers = [];
+  workerIds.forEach(function(id) {
+    var name = document.getElementById("w-name-" + id);
+    if (name) workers.push({
+      name: name.value.trim(),
+      role: (document.getElementById("w-role-" + id) || {value:""}).value.trim(),
+      lic:  (document.getElementById("w-lic-" + id) || {value:""}).value.trim()
+    });
+  });
+  return workers;
+}
+
+/* ── HTML ESCAPE ───────────────────────────────────── */
+function esc(str) {
+  return String(str)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;");
+}
+
+/* ── PATH B: SUBMIT ────────────────────────────────── */
+function b4Submit() {
+  var tasks = collectTasks();
+  var hasTask = false;
+  tasks.forEach(function(t) { if (t.desc) hasTask = true; });
+  if (!hasTask) {
+    var firstDesc = document.getElementById("t-desc-" + taskIds[0]);
+    if (firstDesc) { firstDesc.classList.add("err"); firstDesc.focus(); }
+    return;
   }
-
-  /* ─── PROGRESS ─────────────────────────────────── */
-  function setProgress(steps, active) {
-    var shell = document.getElementById('progress-shell');
-    var track = document.getElementById('progress-track');
-
-    if (!steps) {
-      shell.classList.add('hidden');
-      return;
-    }
-
-    shell.classList.remove('hidden');
-    track.innerHTML = '';
-
-    for (var i = 1; i <= steps; i++) {
-      var dot = document.createElement('div');
-      dot.className = 'p-dot';
-      dot.textContent = i < steps ? String(i) : '';
-      if (i < steps) dot.textContent = String(i);
-      if (i === steps) {
-        // last dot is always the "confirm" check
-        dot.textContent = '';
-      }
-
-      if (i < active) dot.dataset.state = 'done';
-      else if (i === active) dot.dataset.state = 'active';
-
-      var step = document.createElement('div');
-      step.className = 'p-step';
-      step.appendChild(dot);
-      track.appendChild(step);
-
-      if (i < steps) {
-        var line = document.createElement('div');
-        line.className = 'p-line';
-        if (i < active) line.dataset.state = 'done';
-        track.appendChild(line);
-      }
-    }
-  }
-
-  /* ─── GATE ──────────────────────────────────────── */
-  function selectGate(choice) {
-    gate = choice;
-    document.getElementById('gate-yes').classList.toggle('selected', choice === 'yes');
-    document.getElementById('gate-no').classList.toggle('selected', choice === 'no');
-    document.getElementById('btn-gate-next').disabled = false;
-  }
-
-  function gateNext() {
-    if (!gate) return;
-    if (gate === 'yes') {
-      setProgress(2, 1);
-      show('screen-a1');
-    } else {
-      setProgress(3, 1);
-      show('screen-b1');
-    }
-  }
-
-  function goGate() {
+  setProgress(5, 5);
+  document.querySelectorAll(".screen").forEach(function(s) { s.classList.remove("active"); });
+  document.getElementById("loading").classList.add("active");
+  document.getElementById("lt").textContent = "Generating your SWMS...";
+  document.getElementById("ls").textContent = "Applying your details to the template";
+  var subs = ["Building hazard controls...","Formatting tasks and controls...","Preparing sign-off tables...","Finalising your document..."];
+  var si = 0;
+  var lsEl = document.getElementById("ls");
+  var ticker = setInterval(function() {
+    if (si < subs.length) lsEl.textContent = subs[si++]; else clearInterval(ticker);
+  }, 700);
+  setTimeout(function() {
+    clearInterval(ticker);
+    var html = buildSWMSHtml();
+    var blob = new Blob([html], {type:"text/html;charset=utf-8"});
+    var blobUrl = URL.createObjectURL(blob);
+    var company = document.getElementById("b-company").value.trim();
+    var link = document.getElementById("swms-download-link");
+    link.href = blobUrl;
+    link.setAttribute("download", "SWMS_" + company.replace(/[^a-z0-9]/gi,"_") + ".html");
+    document.getElementById("swms-download-block").style.display = "block";
+    document.getElementById("conf-heading").textContent = "Your SWMS is ready.";
+    document.getElementById("conf-body").textContent = "Download your document below. Have all workers sign before starting work.";
+    document.getElementById("conf-step1-title").textContent = "Download your SWMS";
+    document.getElementById("conf-step1-desc").textContent = "Open the file in your browser and use Print to save as PDF.";
     setProgress(null);
-    show('screen-gate');
-  }
+    show("screen-confirm");
+  }, 3200);
+}
 
-  /* ─── VALIDATION ────────────────────────────────── */
-  function isEmail(v) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-  }
+/* ── BUILD SWMS DOCUMENT ───────────────────────────── */
+function buildSWMSHtml() {
+  var companyRaw = document.getElementById("b-company").value.trim();
+  var nameRaw    = document.getElementById("b-name").value.trim();
+  var company    = esc(companyRaw);
+  var name       = esc(nameRaw);
+  var phone      = esc(document.getElementById("b-phone").value.trim());
+  var email      = esc(document.getElementById("b-email").value.trim());
+  var tradeEl    = document.getElementById("b-trade");
+  var trade      = esc(tradeEl.options[tradeEl.selectedIndex].text);
+  var activity   = esc(document.getElementById("b-activity").value.trim());
+  var site       = esc(document.getElementById("b-site").value.trim());
+  var startdate  = esc(document.getElementById("b-startdate").value);
+  var pcname     = esc(document.getElementById("b-pc-name").value.trim());
+  var pcaddr     = esc(document.getElementById("b-pc-address").value.trim());
+  var pcphone    = esc(document.getElementById("b-pc-phone").value.trim());
+  var responsible = esc(document.getElementById("b-responsible").value.trim());
+  var hazards  = getCheckedValues("hazards-grid");
+  var hrcw     = getCheckedValues("hrcw-grid");
+  var ppe      = getCheckedValues("ppe-grid");
+  var permits  = getCheckedValues("permit-grid");
+  var plant    = getCheckedValues("plant-grid");
+  var tasks    = collectTasks();
+  var workers  = collectWorkers();
+  var today    = new Date().toLocaleDateString("en-AU");
 
-  function fe(inputId, errId, invalid) {
-    document.getElementById(inputId).classList.toggle('err', invalid);
-    document.getElementById(errId).classList.toggle('show', invalid);
-    return invalid;
-  }
-
-  function clearFe(inputId, errId) {
-    document.getElementById(inputId).classList.remove('err');
-    document.getElementById(errId).classList.remove('show');
-  }
-
-  /* Live clear on input */
-  var clearPairs = [
-    ['a-name','ea-name'],['a-email','ea-email'],['a-trade','ea-trade'],
-    ['b-name','eb-name'],['b-company','eb-company'],['b-email','eb-email'],['b-trade','eb-trade'],
-    ['b-site','eb-site'],['b-desc','eb-desc'],['b-super','eb-super'],['b-workers','eb-workers']
-  ];
-  clearPairs.forEach(function(pair) {
-    var el = document.getElementById(pair[0]);
-    if (el) {
-      el.addEventListener('input', function() { clearFe(pair[0], pair[1]); });
+  /* Logo HTML */
+  var logoHtml;
+  if (logoMode === "upload" && logoDataUrl) {
+    logoHtml = "<img src=\"" + logoDataUrl + "\" style=\"max-height:80px;max-width:220px;object-fit:contain;display:block;\">";
+  } else {
+    var words = companyRaw.split(" ");
+    var initials = "";
+    for (var wi = 0; wi < Math.min(words.length, 2); wi++) {
+      if (words[wi].length > 0) initials += words[wi][0].toUpperCase();
     }
-  });
-
-  /* ─── PATH A: UPLOAD ────────────────────────────── */
-  function handleFile(e) {
-    var f = e.target.files[0];
-    if (!f) return;
-    selectedFile = f;
-    var mb = (f.size / 1048576).toFixed(1);
-    document.getElementById('fp-name').textContent = f.name;
-    document.getElementById('fp-size').textContent = mb + ' MB';
-    document.getElementById('file-pill').classList.add('show');
-    document.getElementById('upload-zone').classList.add('has-file');
-    document.getElementById('uicon').textContent = 'check_circle';
-    document.getElementById('utitle').textContent = 'Document attached';
-    document.getElementById('uhint').textContent = 'Tap to replace';
-    document.getElementById('ea-file').classList.remove('show');
+    if (!initials) initials = "CO";
+    logoHtml =
+      "<div style=\"display:inline-flex;align-items:center;gap:12px;\">" +
+        "<div style=\"width:52px;height:52px;background:#163029;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:Outfit,Arial,sans-serif;font-size:20px;font-weight:800;color:#AAFF04;flex-shrink:0;\">" + esc(initials) + "</div>" +
+        "<div style=\"font-family:Outfit,Arial,sans-serif;font-size:18px;font-weight:800;color:#163029;letter-spacing:-0.02em;\">" + company + "</div>" +
+      "</div>";
   }
 
-  function removeFile() {
-    selectedFile = null;
-    document.getElementById('file-input').value = '';
-    document.getElementById('file-pill').classList.remove('show');
-    document.getElementById('upload-zone').classList.remove('has-file');
-    document.getElementById('uicon').textContent = 'cloud_upload';
-    document.getElementById('utitle').textContent = 'Tap to upload your SWMS';
-    document.getElementById('uhint').textContent = 'Or drag and drop here';
-  }
-
-  var zone = document.getElementById('upload-zone');
-  zone.addEventListener('dragover', function(e) {
-    e.preventDefault();
-    zone.classList.add('drag-over');
-  });
-  zone.addEventListener('dragleave', function() {
-    zone.classList.remove('drag-over');
-  });
-  zone.addEventListener('drop', function(e) {
-    e.preventDefault();
-    zone.classList.remove('drag-over');
-    var f = e.dataTransfer.files[0];
-    if (f) handleFile({ target: { files: [f] } });
-  });
-
-  function submitUpload() {
-    var name  = document.getElementById('a-name').value.trim();
-    var email = document.getElementById('a-email').value.trim();
-    var trade = document.getElementById('a-trade').value;
-    var ok = true;
-
-    if (fe('a-name',  'ea-name',  !name))           ok = false;
-    if (fe('a-email', 'ea-email', !isEmail(email)))  ok = false;
-    if (fe('a-trade', 'ea-trade', !trade))           ok = false;
-    if (!selectedFile) {
-      document.getElementById('ea-file').classList.add('show');
-      ok = false;
-    }
-    if (!ok) return;
-
-    setProgress(2, 2);
-    document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('active'); });
-    document.getElementById('loading').classList.add('active');
-    document.getElementById('lt').textContent = 'Submitting your SWMS...';
-    document.getElementById('ls').textContent = 'Uploading to our compliance team';
-
-    setTimeout(function() {
-      document.getElementById('conf-heading').textContent = 'SWMS submitted. ✅';
-      document.getElementById('conf-body').textContent = 'Your document is with our compliance team. They will review and confirm approval within 1 business day.';
-      setProgress(null);
-      show('screen-confirm');
-    }, 2200);
-  }
-
-  /* ─── PATH B: DETAILS ───────────────────────────── */
-  function b1Next() {
-    var name    = document.getElementById('b-name').value.trim();
-    var company = document.getElementById('b-company').value.trim();
-    var email   = document.getElementById('b-email').value.trim();
-    var trade   = document.getElementById('b-trade').value;
-    var ok = true;
-
-    if (fe('b-name',    'eb-name',    !name))           ok = false;
-    if (fe('b-company', 'eb-company', !company))        ok = false;
-    if (fe('b-email',   'eb-email',   !isEmail(email))) ok = false;
-    if (fe('b-trade',   'eb-trade',   !trade))          ok = false;
-
-    if (ok) {
-      setProgress(3, 2);
-      show('screen-b2');
-    }
-  }
-
-  /* ─── PATH B: GENERATE ──────────────────────────── */
-  function b2Submit() {
-    var site    = document.getElementById('b-site').value.trim();
-    var desc    = document.getElementById('b-desc').value.trim();
-    var sup     = document.getElementById('b-super').value.trim();
-    var workers = document.getElementById('b-workers').value;
-    var ok = true;
-
-    if (fe('b-site',    'eb-site',    !site))    ok = false;
-    if (fe('b-desc',    'eb-desc',    !desc))    ok = false;
-    if (fe('b-super',   'eb-super',   !sup))     ok = false;
-    if (fe('b-workers', 'eb-workers', !workers)) ok = false;
-
-    if (!ok) return;
-
-    setProgress(3, 3);
-    document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('active'); });
-    document.getElementById('loading').classList.add('active');
-    document.getElementById('lt').textContent = 'Generating your SWMS...';
-    document.getElementById('ls').textContent = 'Applying your trade details to the template';
-
-    var subs = [
-      'Adding hazard controls...',
-      'Applying PPE requirements...',
-      'Finalising your document...'
-    ];
-    var si = 0;
-    var lsEl = document.getElementById('ls');
-    var ticker = setInterval(function() {
-      if (si < subs.length) lsEl.textContent = subs[si++];
-      else clearInterval(ticker);
-    }, 800);
-
-    var tradeEl = document.getElementById('b-trade');
-    var tradeName = tradeEl.options[tradeEl.selectedIndex].text;
-
-    setTimeout(function() {
-      clearInterval(ticker);
-      document.getElementById('conf-heading').textContent = 'SWMS generated. ✅';
-      document.getElementById('conf-body').textContent =
-        'Your ' + tradeName + ' SWMS has been generated and sent to your email. Our team will review and confirm within 1 business day.';
-      document.getElementById('conf-step3-title').textContent = 'Your document is ready';
-      document.getElementById('conf-step3-desc').textContent =
-        'A copy has been sent to your email. Once reviewed, you will get your ChekkU compliance badge.';
-      setProgress(null);
-      show('screen-confirm');
-    }, 3000);
-  }
-
-  /* ─── CHECKBOXES ────────────────────────────────── */
-  document.querySelectorAll('.check-item').forEach(function(item) {
-    var cb = item.querySelector('input[type="checkbox"]');
-    cb.addEventListener('change', function() {
-      item.classList.toggle('checked', cb.checked);
+  /* Checklist rows helper */
+  function checkRows(items, checked) {
+    var rows = "";
+    items.forEach(function(item) {
+      var isChecked = checked.indexOf(item.value) !== -1;
+      rows += "<tr>" +
+        "<td style=\"width:26px;text-align:center;font-size:15px;padding:5px 4px;\">" + (isChecked ? "&#9745;" : "&#9744;") + "</td>" +
+        "<td style=\"padding:5px 8px;font-size:12px;\">" + item.label + "</td>" +
+      "</tr>";
     });
+    return rows;
+  }
+
+  /* Risk badge */
+  function riskBadge(risk) {
+    var bg = "#e5f5ec"; var fg = "#2a9d6a";
+    if (risk === "2M") { bg = "#fef3da"; fg = "#b45309"; }
+    if (risk === "3H") { bg = "#fde8e8"; fg = "#e5484d"; }
+    if (risk === "4A") { bg = "#1b1e29"; fg = "#aaff04"; }
+    return "<span style=\"background:" + bg + ";color:" + fg + ";padding:2px 8px;border-radius:4px;font-weight:700;font-size:11px;white-space:nowrap;\">" + risk + "</span>";
+  }
+
+  /* Task rows */
+  var taskRows =
+    "<tr>" +
+      "<td style=\"padding:8px;font-weight:600;font-size:12px;\">Emergency Response</td>" +
+      "<td style=\"padding:8px;font-size:12px;\">Injury, illness, emergency situation</td>" +
+      "<td style=\"padding:8px;text-align:center;\">" + riskBadge("3H") + "</td>" +
+      "<td style=\"padding:8px;font-size:12px;\">Emergency procedures displayed on site. First aid kit maintained and accessible. Emergency contact numbers posted. All workers briefed on emergency procedures before commencing work.</td>" +
+      "<td style=\"padding:8px;font-size:12px;\">Site Supervisor</td>" +
+    "</tr>";
+  tasks.forEach(function(t) {
+    if (!t.desc) return;
+    taskRows +=
+      "<tr>" +
+        "<td style=\"padding:8px;font-size:12px;\">" + esc(t.desc) + "</td>" +
+        "<td style=\"padding:8px;font-size:12px;\">" + esc(t.haz) + "</td>" +
+        "<td style=\"padding:8px;text-align:center;\">" + riskBadge(t.risk) + "</td>" +
+        "<td style=\"padding:8px;font-size:12px;\">" + esc(t.ctrl) + "</td>" +
+        "<td style=\"padding:8px;font-size:12px;\">" + esc(t.resp) + "</td>" +
+      "</tr>";
   });
+
+  /* Worker rows */
+  var workerRows = "";
+  workers.forEach(function(w) {
+    workerRows +=
+      "<tr style=\"height:44px;\">" +
+        "<td style=\"padding:6px 8px;font-size:12px;\">" + esc(w.name) + "</td>" +
+        "<td style=\"padding:6px 8px;font-size:12px;\">" + esc(w.role) + "</td>" +
+        "<td style=\"padding:6px 8px;font-size:12px;\">" + esc(w.lic) + "</td>" +
+        "<td style=\"padding:6px 8px;\"></td>" +
+        "<td style=\"padding:6px 8px;border-bottom:1px solid #ccc;\"></td>" +
+      "</tr>";
+  });
+  for (var bi = 0; bi < 3; bi++) {
+    workerRows += "<tr style=\"height:44px;\"><td></td><td></td><td></td><td></td><td style=\"border-bottom:1px solid #ccc;\"></td></tr>";
+  }
+
+  var doc =
+    "<!DOCTYPE html><html lang=\"en\"><head>" +
+    "<meta charset=\"UTF-8\">" +
+    "<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">" +
+    "<title>SWMS - " + company + " - " + activity + "</title>" +
+    "<link href=\"https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap\" rel=\"stylesheet\">" +
+    "<style>" +
+    "*{box-sizing:border-box;margin:0;padding:0;}" +
+    "body{font-family:Outfit,Arial,sans-serif;font-size:13px;color:#163029;background:#fff;}" +
+    ".pbar{position:sticky;top:0;background:#163029;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;z-index:100;}" +
+    ".pbar-title{font-size:13px;font-weight:700;color:#AAFF04;}" +
+    ".pbtn{background:#AAFF04;color:#163029;border:none;padding:8px 20px;border-radius:9999px;font-family:Outfit,Arial,sans-serif;font-size:13px;font-weight:700;cursor:pointer;}" +
+    ".doc{max-width:900px;margin:0 auto;padding:32px 40px;}" +
+    ".doc-hdr{display:flex;align-items:flex-start;justify-content:space-between;border-bottom:3px solid #163029;padding-bottom:20px;margin-bottom:24px;gap:20px;}" +
+    ".doc-title{font-size:20px;font-weight:800;color:#163029;letter-spacing:-0.02em;text-align:right;}" +
+    ".doc-sub{font-size:12px;color:#6A9A8D;margin-top:4px;text-align:right;}" +
+    ".sec{margin-bottom:24px;}" +
+    ".sec-hdr{background:#163029;color:#AAFF04;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:6px 12px;}" +
+    "table{width:100%;border-collapse:collapse;}" +
+    "td,th{border:1px solid #D1DDD9;vertical-align:top;}" +
+    "th{background:#F4F7F5;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:#2A5648;padding:7px 8px;text-align:left;}" +
+    ".dtable td:first-child{font-weight:600;background:#F4F7F5;width:35%;padding:7px 12px;font-size:12px;}" +
+    ".dtable td:last-child{padding:7px 12px;font-size:12px;}" +
+    ".two{display:grid;grid-template-columns:1fr 1fr;gap:24px;}" +
+    ".clause{background:#F4F7F5;border-left:3px solid #AAFF04;padding:10px 14px;margin-bottom:10px;}" +
+    ".clause-title{font-weight:700;font-size:12px;margin-bottom:3px;}" +
+    ".clause-body{font-size:11px;color:#2A5648;line-height:1.55;}" +
+    ".brand-footer{text-align:center;margin-top:40px;padding-top:16px;border-top:1px solid #E8EEEC;font-size:11px;color:#A0BEB5;}" +
+    "@media print{.pbar{display:none!important;}.doc{padding:16px;}body{font-size:11px;}}" +
+    "</style></head><body>" +
+
+    "<div class=\"pbar\">" +
+      "<div class=\"pbar-title\">SWMS &mdash; " + company + "</div>" +
+      "<button class=\"pbtn\" onclick=\"window.print()\">Print / Save as PDF</button>" +
+    "</div>" +
+
+    "<div class=\"doc\">" +
+
+    "<div class=\"doc-hdr\">" +
+      "<div>" + logoHtml + "</div>" +
+      "<div><div class=\"doc-title\">Safe Work Method Statement</div><div class=\"doc-sub\">Generated by ChekkU &mdash; " + today + "</div></div>" +
+    "</div>" +
+
+    "<div class=\"sec\">" +
+      "<div class=\"sec-hdr\">Document Details</div>" +
+      "<table class=\"dtable\"><tbody>" +
+        "<tr><td>Activity / Task</td><td>" + activity + "</td></tr>" +
+        "<tr><td>Business Name</td><td>" + company + "</td></tr>" +
+        "<tr><td>Business Contact</td><td>" + name + "</td></tr>" +
+        "<tr><td>Contact Phone</td><td>" + phone + "</td></tr>" +
+        "<tr><td>Contact Email</td><td>" + email + "</td></tr>" +
+        "<tr><td>Trade</td><td>" + trade + "</td></tr>" +
+        "<tr><td>Principal Contractor</td><td>" + pcname + "</td></tr>" +
+        "<tr><td>PC Address</td><td>" + pcaddr + "</td></tr>" +
+        "<tr><td>PC Phone</td><td>" + pcphone + "</td></tr>" +
+        "<tr><td>Job Site Address</td><td>" + site + "</td></tr>" +
+        "<tr><td>Responsible Person</td><td>" + responsible + "</td></tr>" +
+        "<tr><td>Work Start Date</td><td>" + startdate + "</td></tr>" +
+        "<tr><td>SWMS Prepared</td><td>" + today + "</td></tr>" +
+      "</tbody></table>" +
+    "</div>" +
+
+    "<div class=\"two\">" +
+      "<div class=\"sec\">" +
+        "<div class=\"sec-hdr\">Section 1 &mdash; Hazards Identification</div>" +
+        "<table><tbody>" + checkRows(HAZARD_ITEMS, hazards) + "</tbody></table>" +
+      "</div>" +
+      "<div class=\"sec\">" +
+        "<div class=\"sec-hdr\">Section 2 &mdash; High Risk Construction Work</div>" +
+        "<table><tbody>" + checkRows(HRCW_ITEMS, hrcw) + "</tbody></table>" +
+      "</div>" +
+    "</div>" +
+
+    "<div class=\"sec\">" +
+      "<div class=\"sec-hdr\">Section 3 &mdash; PPE Required</div>" +
+      "<table><tbody>" + checkRows(PPE_ITEMS, ppe) + "</tbody></table>" +
+    "</div>" +
+
+    "<div class=\"sec\">" +
+      "<div class=\"sec-hdr\">Standard Control Measures</div>" +
+      "<div style=\"padding:12px 0 0;\">" +
+        "<div class=\"clause\"><div class=\"clause-title\">Planning and Preparation</div><div class=\"clause-body\">Before commencing work, the responsible person shall inspect the work area and identify all hazards. This SWMS must be reviewed and signed by all workers prior to commencing work. If any new hazards are identified during work, work must stop until the SWMS is updated.</div></div>" +
+        "<div class=\"clause\"><div class=\"clause-title\">Training, Licences and Competencies</div><div class=\"clause-body\">All workers must hold current and valid licences, tickets and qualifications relevant to the work being performed. Copies of all licences and competencies must be made available on request.</div></div>" +
+        "<div class=\"clause\"><div class=\"clause-title\">Worker Duties</div><div class=\"clause-body\">All workers must follow this SWMS at all times. Workers must report any new hazards to the responsible person immediately. Workers have the right to stop unsafe work without penalty.</div></div>" +
+        "<div class=\"clause\"><div class=\"clause-title\">Monitoring and Review</div><div class=\"clause-body\">This SWMS must be reviewed if there is a change to the work, a near-miss or incident occurs, a regulator or inspector directs a review, or at regular intervals throughout the project.</div></div>" +
+      "</div>" +
+    "</div>" +
+
+    "<div class=\"sec\">" +
+      "<div class=\"sec-hdr\">Section 12 &mdash; Job Tasks, Hazards and Control Measures</div>" +
+      "<table>" +
+        "<thead><tr>" +
+          "<th style=\"width:20%\">Job Task</th>" +
+          "<th style=\"width:17%\">Hazards</th>" +
+          "<th style=\"width:8%\">Risk</th>" +
+          "<th style=\"width:35%\">Control Measures</th>" +
+          "<th style=\"width:20%\">Responsible Person</th>" +
+        "</tr></thead>" +
+        "<tbody>" + taskRows + "</tbody>" +
+      "</table>" +
+    "</div>" +
+
+    "<div class=\"two\">" +
+      "<div class=\"sec\">" +
+        "<div class=\"sec-hdr\">Section 15 &mdash; Permits Required</div>" +
+        "<table><tbody>" + checkRows(PERMIT_ITEMS, permits) + "</tbody></table>" +
+      "</div>" +
+      "<div class=\"sec\">" +
+        "<div class=\"sec-hdr\">Section 16 &mdash; Plant and Equipment</div>" +
+        "<table><tbody>" + checkRows(PLANT_ITEMS, plant) + "</tbody></table>" +
+      "</div>" +
+    "</div>" +
+
+    "<div class=\"sec\">" +
+      "<div class=\"sec-hdr\">Section 20 &mdash; Worker Sign-Off</div>" +
+      "<table>" +
+        "<thead><tr>" +
+          "<th style=\"width:22%\">Worker Name</th>" +
+          "<th style=\"width:20%\">Role / Position</th>" +
+          "<th style=\"width:26%\">Licences / Competencies</th>" +
+          "<th style=\"width:12%\">Date</th>" +
+          "<th style=\"width:20%\">Signature</th>" +
+        "</tr></thead>" +
+        "<tbody>" + workerRows + "</tbody>" +
+      "</table>" +
+    "</div>" +
+
+    "<div class=\"brand-footer\">Generated by <strong>ChekkU</strong> &mdash; Australia's trade compliance platform &mdash; <a href=\"https://chekku.au\" style=\"color:#163029;\">chekku.au</a></div>" +
+
+    "</div></body></html>";
+
+  return doc;
+}
+
+/* ── CHECKBOX TOGGLE ───────────────────────────────── */
+document.querySelectorAll(".check-item").forEach(function(item) {
+  var cb = item.querySelector("input[type=checkbox]");
+  cb.addEventListener("change", function() { item.classList.toggle("checked", cb.checked); });
+});
+
+/* ── INIT ──────────────────────────────────────────── */
+(function() {
+  var wrap = document.createElement("div");
+  wrap.innerHTML = buildTaskRowHtml(0);
+  document.getElementById("tasks-container").appendChild(wrap.firstChild);
+  updateTaskNumbers();
+  var wWrap = document.createElement("div");
+  wWrap.innerHTML = buildWorkerRowHtml(0);
+  document.getElementById("workers-container").appendChild(wWrap.firstChild);
+  updateWorkerNumbers();
+})();
 </script>
 
 </body>
