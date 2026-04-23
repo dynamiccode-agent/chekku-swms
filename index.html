@@ -775,7 +775,7 @@ function setProgress(steps, active) {
   for (var i = 1; i <= steps; i++) {
     var dot = document.createElement("div");
     dot.className = "p-dot";
-    dot.textContent = i < steps ? String(i) : "";
+    dot.textContent = String(i);
     if (i < active) dot.dataset.state = "done";
     else if (i === active) dot.dataset.state = "active";
     var step = document.createElement("div");
