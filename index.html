@@ -638,10 +638,10 @@
         </div>
 
         <div id="swms-download-block" class="download-block" style="display:none;">
-          <a id="swms-download-link" class="btn btn-primary" href="#" download="SWMS.html" style="text-decoration:none;">
-            <span class="material-icons-outlined bicon">download</span> Download your SWMS
-          </a>
-          <div class="download-note">Open in browser then use Print &rsaquo; Save as PDF</div>
+          <button class="btn btn-primary" onclick="openSWMS()" type="button">
+            <span class="material-icons-outlined bicon">picture_as_pdf</span> Save SWMS as PDF
+          </button>
+          <div class="download-note">Opens a new tab &rarr; click &ldquo;Save as PDF&rdquo; in the print dialog</div>
         </div>
 
         <div class="card">
@@ -696,6 +696,7 @@
 /* ── STATE ─────────────────────────────────────────── */
 var gate = null;
 var selectedFile = null;
+var swmsBlobUrl = null;
 var logoMode = "text";
 var logoDataUrl = null;
 var taskIds = [0];
@@ -1150,20 +1151,20 @@ function b4Submit() {
   setTimeout(function() {
     clearInterval(ticker);
     var html = buildSWMSHtml();
-    var blob = new Blob([html], {type:"text/html;charset=utf-8"});
-    var blobUrl = URL.createObjectURL(blob);
-    var company = document.getElementById("b-company").value.trim();
-    var link = document.getElementById("swms-download-link");
-    link.href = blobUrl;
-    link.setAttribute("download", "SWMS_" + company.replace(/[^a-z0-9]/gi,"_") + ".html");
+    if (swmsBlobUrl) URL.revokeObjectURL(swmsBlobUrl);
+    swmsBlobUrl = URL.createObjectURL(new Blob([html], {type:"text/html;charset=utf-8"}));
     document.getElementById("swms-download-block").style.display = "block";
     document.getElementById("conf-heading").textContent = "Your SWMS is ready.";
-    document.getElementById("conf-body").textContent = "Download your document below. Have all workers sign before starting work.";
-    document.getElementById("conf-step1-title").textContent = "Download your SWMS";
-    document.getElementById("conf-step1-desc").textContent = "Open the file in your browser and use Print to save as PDF.";
+    document.getElementById("conf-body").textContent = "Save it as a PDF below, then have all workers sign before starting work.";
+    document.getElementById("conf-step1-title").textContent = "Save your SWMS as PDF";
+    document.getElementById("conf-step1-desc").textContent = "Click the button above — a print dialog opens, select Save as PDF.";
     setProgress(null);
     show("screen-confirm");
   }, 3200);
+}
+
+function openSWMS() {
+  if (swmsBlobUrl) window.open(swmsBlobUrl, "_blank");
 }
 
 /* ── BUILD SWMS DOCUMENT ───────────────────────────── */
@@ -1276,29 +1277,38 @@ function buildSWMSHtml() {
     "<title>SWMS - " + company + " - " + activity + "</title>" +
     "<link href=\"https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap\" rel=\"stylesheet\">" +
     "<style>" +
+    "@page{size:A4 portrait;margin:18mm 20mm;}" +
     "*{box-sizing:border-box;margin:0;padding:0;}" +
-    "body{font-family:Outfit,Arial,sans-serif;font-size:13px;color:#163029;background:#fff;}" +
-    ".pbar{position:sticky;top:0;background:#163029;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;z-index:100;}" +
+    "body{font-family:Outfit,Arial,sans-serif;font-size:12px;color:#163029;background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact;}" +
+    ".pbar{background:#163029;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;}" +
     ".pbar-title{font-size:13px;font-weight:700;color:#AAFF04;}" +
     ".pbtn{background:#AAFF04;color:#163029;border:none;padding:8px 20px;border-radius:9999px;font-family:Outfit,Arial,sans-serif;font-size:13px;font-weight:700;cursor:pointer;}" +
-    ".doc{max-width:900px;margin:0 auto;padding:32px 40px;}" +
-    ".doc-hdr{display:flex;align-items:flex-start;justify-content:space-between;border-bottom:3px solid #163029;padding-bottom:20px;margin-bottom:24px;gap:20px;}" +
-    ".doc-title{font-size:20px;font-weight:800;color:#163029;letter-spacing:-0.02em;text-align:right;}" +
-    ".doc-sub{font-size:12px;color:#6A9A8D;margin-top:4px;text-align:right;}" +
-    ".sec{margin-bottom:24px;}" +
-    ".sec-hdr{background:#163029;color:#AAFF04;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:6px 12px;}" +
+    ".doc{max-width:100%;padding:0;}" +
+    ".doc-hdr{display:flex;align-items:flex-start;justify-content:space-between;border-bottom:3px solid #163029;padding-bottom:16px;margin-bottom:20px;gap:16px;page-break-after:avoid;}" +
+    ".doc-title{font-size:18px;font-weight:800;color:#163029;letter-spacing:-0.02em;text-align:right;}" +
+    ".doc-sub{font-size:11px;color:#6A9A8D;margin-top:4px;text-align:right;}" +
+    ".sec{margin-bottom:20px;}" +
+    ".sec-hdr{background:#163029;color:#AAFF04;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:5px 10px;page-break-after:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact;}" +
     "table{width:100%;border-collapse:collapse;}" +
     "td,th{border:1px solid #D1DDD9;vertical-align:top;}" +
-    "th{background:#F4F7F5;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:#2A5648;padding:7px 8px;text-align:left;}" +
-    ".dtable td:first-child{font-weight:600;background:#F4F7F5;width:35%;padding:7px 12px;font-size:12px;}" +
-    ".dtable td:last-child{padding:7px 12px;font-size:12px;}" +
-    ".two{display:grid;grid-template-columns:1fr 1fr;gap:24px;}" +
-    ".clause{background:#F4F7F5;border-left:3px solid #AAFF04;padding:10px 14px;margin-bottom:10px;}" +
-    ".clause-title{font-weight:700;font-size:12px;margin-bottom:3px;}" +
-    ".clause-body{font-size:11px;color:#2A5648;line-height:1.55;}" +
-    ".brand-footer{text-align:center;margin-top:40px;padding-top:16px;border-top:1px solid #E8EEEC;font-size:11px;color:#A0BEB5;}" +
-    "@media print{.pbar{display:none!important;}.doc{padding:16px;}body{font-size:11px;}}" +
-    "</style></head><body>" +
+    "th{background:#F4F7F5;font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:#2A5648;padding:6px 8px;text-align:left;-webkit-print-color-adjust:exact;print-color-adjust:exact;}" +
+    "tr{page-break-inside:avoid;}" +
+    ".dtable td:first-child{font-weight:600;background:#F4F7F5;width:34%;padding:6px 10px;font-size:11px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}" +
+    ".dtable td:last-child{padding:6px 10px;font-size:11px;}" +
+    ".two{display:grid;grid-template-columns:1fr 1fr;gap:20px;}" +
+    ".clause{background:#F4F7F5;border-left:3px solid #AAFF04;padding:9px 12px;margin-bottom:9px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}" +
+    ".clause-title{font-weight:700;font-size:11px;margin-bottom:3px;}" +
+    ".clause-body{font-size:10px;color:#2A5648;line-height:1.5;}" +
+    ".brand-footer{text-align:center;margin-top:32px;padding-top:14px;border-top:1px solid #E8EEEC;font-size:10px;color:#A0BEB5;}" +
+    ".pb{page-break-before:always;}" +
+    "@media print{" +
+      ".pbar{display:none!important;}" +
+      "body{font-size:11px;}" +
+      ".two{display:grid;grid-template-columns:1fr 1fr;gap:16px;}" +
+    "}" +
+    "</style>" +
+    "<script>window.addEventListener('load',function(){setTimeout(function(){window.print();},700);});<\/script>" +
+    "</head><body>" +
 
     "<div class=\"pbar\">" +
       "<div class=\"pbar-title\">SWMS &mdash; " + company + "</div>" +
@@ -1357,7 +1367,7 @@ function buildSWMSHtml() {
       "</div>" +
     "</div>" +
 
-    "<div class=\"sec\">" +
+    "<div class=\"sec pb\">" +
       "<div class=\"sec-hdr\">Section 12 &mdash; Job Tasks, Hazards and Control Measures</div>" +
       "<table>" +
         "<thead><tr>" +
@@ -1382,7 +1392,7 @@ function buildSWMSHtml() {
       "</div>" +
     "</div>" +
 
-    "<div class=\"sec\">" +
+    "<div class=\"sec pb\">" +
       "<div class=\"sec-hdr\">Section 20 &mdash; Worker Sign-Off</div>" +
       "<table>" +
         "<thead><tr>" +
